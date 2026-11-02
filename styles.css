@@ -188,3 +188,46 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 @media(max-width:800px){.premiere-grid .project-card .poster{min-height:340px;aspect-ratio:1.12}.premiere-grid .project-card .poster-main,.premiere-grid .project-card:not(.large) .poster-main{font-size:clamp(39px,8.5vw,65px)}.journey-symbol{height:40px}.journey-symbol svg{width:25px;height:25px}}
 @media(max-width:520px){.premiere-grid .project-card .poster{min-height:300px;aspect-ratio:1.08;padding:25px!important}.premiere-grid .project-card .poster-main,.premiere-grid .project-card:not(.large) .poster-main{font-size:clamp(38px,10vw,54px)}.poster-link-icon{width:38px;height:38px;padding:10px}.pink-inner{padding-top:72px;padding-bottom:72px}.pink-takeover{min-height:0}.pink-headline{margin:38px 0}.pink-star{width:48px;height:48px;flex:none}.journey-step{padding:28px 0}.journey-step h3{margin-bottom:10px}.premiere-approach .display{margin-bottom:34px}.section.projects{padding-bottom:75px}}
 @media(prefers-reduced-motion:reduce){.pink-star{animation:none!important}}
+
+/* DERZKO 4.4 FINAL TOUCH — refinements below the unchanged 3.6 intro and 4.1 hero. */
+.back-top{display:inline-flex;align-items:center;gap:13px;font-size:10px;font-weight:800;letter-spacing:.13em;white-space:nowrap;align-self:start;justify-self:end}
+.back-top svg{width:42px!important;height:42px!important;padding:10px;border:1px solid #d99ab3;border-radius:50%;color:#f4e8ec;transition:background .25s,transform .25s}
+.back-top:hover svg{background:#b9507b;transform:translate(2px,-2px)}
+.footer{align-items:center;row-gap:22px;padding-top:42px;padding-bottom:30px}
+.footer-logo{line-height:1}
+.footer>div{max-width:270px;line-height:1.6}
+.projects-note{margin:22px 0 0;max-width:640px;line-height:1.6}
+.premiere-approach .display{margin-top:46px}
+@media(max-width:800px){
+.section{padding-top:64px;padding-bottom:64px}
+.section.projects{padding-bottom:42px}
+.projects-head{margin:40px 0 25px}
+.premiere-grid{row-gap:16px!important}
+.pink-inner{padding-top:65px;padding-bottom:65px}
+.pink-takeover{min-height:0}
+.premiere-approach .display{margin-top:34px;margin-bottom:30px}
+.contact-grid{margin-top:38px;gap:28px}
+.contact-intro{margin-top:24px}
+.contact-note{margin-top:22px}
+.footer{grid-template-columns:minmax(0,1fr) auto;gap:22px;padding:35px 6% 26px}
+.footer>div{grid-row:2;grid-column:1/-1;max-width:none;gap:6px}
+.footer small{grid-column:1/-1}
+.back-top{grid-column:2;grid-row:1}
+.back-top svg{width:38px!important;height:38px!important}
+}
+@media(max-width:520px){
+.section{padding-top:52px;padding-bottom:52px}
+.section.projects{padding-bottom:34px}
+.projects-note{font-size:11px;margin-top:16px}
+.pink-inner{padding-top:54px;padding-bottom:54px}
+.pink-headline{margin:30px 0 35px}
+.pink-bottom{gap:12px}
+.pink-bottom p{font-size:16px}
+.premiere-approach .display{margin-top:26px;margin-bottom:25px}
+.journey-step{padding:24px 0}
+.contact-grid{margin-top:30px}
+.contact .final-display{font-size:clamp(36px,8.8vw,54px)}
+.footer-logo{font-size:42px}
+.back-top{font-size:9px;gap:8px}
+.back-top svg{width:36px!important;height:36px!important;padding:9px}
+}
