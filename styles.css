@@ -399,3 +399,7 @@ body{background:#120b10}
  .team-card p{font-size:12px;line-height:1.5}
  .team-grid{gap:10px}
 }
+
+/* DERZKO 6.2 — lift only the large background brand outline */
+.hero-giant-word{-webkit-text-stroke-color:rgba(222,156,181,.24)!important;opacity:1}
+@media(max-width:700px){.hero-giant-word{-webkit-text-stroke-color:rgba(230,164,188,.29)!important}}
