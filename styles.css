@@ -65,3 +65,12 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 @keyframes fogFlowB{0%{transform:translate3d(7%,2%,0) scale(1.06)}100%{transform:translate3d(-9%,-12%,0) scale(.97)}}
 @media(max-width:520px){.intro-smoke i{left:-45%;bottom:-5%;width:145%;height:43%;filter:blur(18px)}.intro-smoke i:nth-child(2){left:5%;bottom:-6%;width:135%;height:47%;filter:blur(22px)}.intro-smoke i:nth-child(3){left:-20%;bottom:0;width:140%;height:28%;filter:blur(21px)}.round-link .brand-arrow{width:24px;height:24px}}
 @media(prefers-reduced-motion:reduce){.intro-smoke{display:none!important}}
+
+/* DERZKO 3.5: clean smooth desktop background, no grain overlay. */
+.grain{display:none!important;background:none!important;opacity:0!important}
+/* Soft cloud silhouettes layered above existing lighting; no changes to spotlights. */
+.intro-smoke{z-index:1;isolation:isolate}
+.intro-smoke i{filter:blur(32px);height:47%;bottom:-8%;opacity:.67;mix-blend-mode:screen;background:radial-gradient(ellipse 27% 37% at 13% 72%,rgba(201,154,178,.44) 0%,transparent 100%),radial-gradient(ellipse 31% 40% at 39% 45%,rgba(192,126,158,.40) 0%,transparent 100%),radial-gradient(ellipse 27% 35% at 70% 68%,rgba(177,117,150,.39) 0%,transparent 100%),radial-gradient(ellipse 23% 31% at 91% 42%,rgba(166,108,141,.33) 0%,transparent 100%);animation:fogFlowA 9s ease-in-out infinite alternate}
+.intro-smoke i:nth-child(2){bottom:-12%;height:45%;opacity:.51;filter:blur(44px);animation-duration:13s}
+.intro-smoke i:nth-child(3){bottom:1%;height:26%;opacity:.38;filter:blur(37px);animation-duration:11s}
+@media(max-width:520px){.intro-smoke i{bottom:-5%;height:42%;filter:blur(24px)}.intro-smoke i:nth-child(2){bottom:-7%;height:40%;filter:blur(28px)}.intro-smoke i:nth-child(3){bottom:2%;height:25%;filter:blur(25px)}}
