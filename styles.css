@@ -38,3 +38,13 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 .round-link:hover .brand-arrow{transform:translate(3px,0);color:inherit}
 .service:hover .brand-arrow,.project-card:hover .brand-arrow{transform:translate(3px,0)}
 @media(prefers-reduced-motion:reduce){.brand-arrow{transition:none!important}}
+
+/* DERZKO 3.2: subtle smoke only; existing spotlights unchanged */
+.intro-smoke{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:0;animation:smokeAppear 1.7s 0.7s ease-out forwards}
+.intro-smoke i{position:absolute;display:block;bottom:-19%;left:-22%;width:100%;height:57%;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(170,89,116,.17) 0%,rgba(111,41,70,.10) 34%,transparent 69%);filter:blur(42px);transform:translate3d(0,0,0);animation:smokeDrift 8s ease-in-out infinite alternate}
+.intro-smoke i:nth-child(2){left:26%;bottom:-22%;width:98%;height:64%;opacity:.68;animation-duration:10s;animation-delay:-3s;transform:scaleX(-1)}
+.intro-smoke i:nth-child(3){left:2%;bottom:-8%;width:90%;height:35%;opacity:.4;filter:blur(55px);animation-duration:12s;animation-delay:-5s}
+@keyframes smokeAppear{to{opacity:1}}
+@keyframes smokeDrift{0%{transform:translate3d(-4%,2%,0) scale(1)}100%{transform:translate3d(8%,-11%,0) scale(1.12)}}
+@media(max-width:520px){.intro-smoke i{bottom:-12%;height:43%;filter:blur(35px)}.intro-smoke i:nth-child(2){bottom:-15%;height:48%}}
+@media(prefers-reduced-motion:reduce){.intro-smoke{display:none}}
