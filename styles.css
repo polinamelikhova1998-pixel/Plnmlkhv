@@ -312,3 +312,21 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 .premiere-grid .project-card .concept-photo .poster-top,.premiere-grid .project-card .concept-photo .poster-main,.premiere-grid .project-card .concept-photo .poster-foot{z-index:3}
 .premiere-grid .project-card .concept-photo::after{z-index:2;pointer-events:none}
 .premiere-grid .project-card .concept-photo .concept-photo-count{z-index:4}
+
+/* 5.7: Team — editorial cards, no photos or invented names */
+.team-section{padding-top:clamp(68px,9vw,136px);padding-bottom:clamp(68px,9vw,136px)}
+.team-intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(230px,.65fr);gap:clamp(24px,5vw,90px);align-items:end;margin:clamp(32px,6vw,85px) 0 clamp(26px,4vw,56px)}
+.team-intro .display{font-size:clamp(39px,6.2vw,100px);line-height:1.02;letter-spacing:-.055em;overflow-wrap:normal}
+.team-intro .display em{color:#ed8cb4;font-style:normal}
+.team-intro p{font-size:clamp(14px,1.3vw,18px);line-height:1.7;color:#d5bbc8;max-width:380px}
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.team-card{min-height:230px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(20px,2.2vw,34px);border:1px solid rgba(237,140,180,.22);background:linear-gradient(145deg,rgba(89,31,59,.35),rgba(24,10,21,.55));transition:border-color .35s ease,transform .35s ease,background .35s ease;min-width:0}
+.team-card:hover{border-color:rgba(237,140,180,.8);transform:translateY(-5px);background:linear-gradient(145deg,rgba(110,35,72,.48),rgba(24,10,21,.65))}
+.team-index{font-size:10px;letter-spacing:.18em;color:#e5a0bf;font-weight:700}
+.team-card h3{font-size:clamp(16px,1.6vw,23px);line-height:1.12;letter-spacing:-.025em;font-weight:800;color:#fff;overflow-wrap:break-word;margin:auto 0 0}
+.team-card p{font-size:13px;line-height:1.55;color:#d2b5c3;margin:0}
+.team-outro{margin-top:clamp(26px,5vw,66px);font-size:clamp(21px,3.3vw,52px);line-height:1.1;letter-spacing:-.04em;font-weight:800;color:#fff}
+.team-outro em{font-style:normal;color:#ed8cb4}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-intro{grid-template-columns:1fr;gap:16px}.team-intro p{max-width:560px}}
+@media(max-width:480px){.team-grid{gap:9px}.team-card{padding:16px;min-height:202px;gap:14px}.team-card h3{font-size:15px}.team-card p{font-size:12px}.team-intro .display{font-size:clamp(36px,10vw,55px)}.team-section{padding-top:70px;padding-bottom:72px}}
+@media(prefers-reduced-motion:reduce){.team-card{transition:none}}
