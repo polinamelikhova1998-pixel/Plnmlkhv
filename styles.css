@@ -114,3 +114,49 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 @media(max-width:800px){.about-grid{grid-template-columns:1fr}.about .display{font-size:clamp(42px,10vw,75px)}.services-hint{margin:-20px 0 24px}.placeholder-label{font-size:clamp(40px,8vw,70px)}}
 @media(max-width:520px){.about .display{font-size:clamp(38px,9.8vw,58px)}.placeholder-label,.project-card:not(.large) .placeholder-label{font-size:clamp(39px,11vw,65px)}.photo-placeholder{padding:26px}.service-detail{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.hero-glow{animation:none}.photo-placeholder:before{transition:none}}
+
+
+/* DERZKO 4.1: high-impact main site only. Intro 3.6 rules remain untouched. */
+.grain{display:none!important}
+.hero{background:radial-gradient(ellipse at 66% 47%,#63203c 0%,#2b0e20 36%,#0b090e 79%);isolation:isolate}
+.hero-art{perspective:1100px}
+.hero-giant-word{position:absolute;top:20%;left:2%;font-weight:800;font-size:clamp(190px,34vw,680px);letter-spacing:-.11em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(246,169,196,.13);white-space:nowrap;transform:rotate(-7deg);animation:ghostDrift 18s ease-in-out infinite alternate;user-select:none}
+.hero-orbit{position:absolute;border:1px solid rgba(237,144,182,.22);border-radius:50%;width:65vw;height:65vw;right:-13%;top:7%;transform:rotate(-25deg);box-shadow:0 0 75px rgba(184,49,99,.09)}
+.hero-orbit-two{width:40vw;height:40vw;right:-1%;top:20%;border-color:rgba(255,207,225,.11);animation:orbitPulse 8s ease-in-out infinite alternate}
+.hero-scan{position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(237,102,155,.08) 48%,transparent 62%);transform:translateX(-100%);animation:scanLight 11s ease-in-out infinite 3s}
+.hero-cue{display:inline-flex;align-items:center;gap:12px;color:#f0a3bd;letter-spacing:.22em;font-size:10px;font-weight:800;margin-bottom:24px}
+.cue-pulse{width:8px;height:8px;background:#ec8caf;border-radius:50%;box-shadow:0 0 0 6px #ec8caf20;animation:cuePulse 2s ease-in-out infinite}
+.hero-title{font-size:clamp(72px,11.4vw,190px);line-height:.86;margin:24px 0 54px;text-shadow:0 12px 55px #10070b55}
+.hero-title>span:first-child{transform-origin:left center}
+.hero-title .outline{-webkit-text-stroke:2px #f1e8e8;transition:color .5s,-webkit-text-stroke-color .5s}
+.hero-title .outline:hover{color:#e69ab5;-webkit-text-stroke-color:#e69ab5}
+.hero-content{padding-bottom:clamp(90px,13vh,155px)}
+.hero-bottomline{position:absolute;bottom:22px;left:5.5%;right:5.5%;display:flex;justify-content:space-between;z-index:4;border-top:1px solid #ffffff28;padding-top:12px;font-size:9px;letter-spacing:.18em;color:#c9a6b6}
+.hero .round-link{width:88px;height:88px;position:relative;box-shadow:0 0 0 12px #e8a3bb0d;animation:roundBreath 3.5s ease-in-out infinite}
+.impact-strip{overflow:hidden;background:#bc5a80;color:#1c0b14;padding:18px 0;position:relative;z-index:5;transform:rotate(-1deg) scale(1.02);margin:0 0 12px}
+.impact-strip>div{white-space:nowrap;width:max-content;font-size:clamp(16px,2vw,30px);font-weight:800;letter-spacing:.04em;animation:impactRun 28s linear infinite}
+.impact-strip b{padding:0 28px;color:#f9e5eb}
+.about{position:relative;background:radial-gradient(ellipse at 95% 35%,#42132735,transparent 60%)}
+.about .display em{color:#e084a7}
+.about .asterisk{display:inline-block;animation:diamondSpin 12s linear infinite}
+.expertise .service{transition:background .35s,padding .35s,border-color .35s}
+.expertise .service:hover,.expertise .service[aria-expanded=true]{background:linear-gradient(90deg,#6b254355,transparent 90%);padding-left:22px;border-color:#d97c9e}
+.expertise .service h3{transition:transform .3s,color .3s}
+.expertise .service:hover h3{color:#f5b1cb;transform:translateX(8px)}
+.projects{background:radial-gradient(ellipse at 20% 45%,#40132735,transparent 70%)}
+.project-card .project-visual{transition:transform .75s cubic-bezier(.2,.8,.2,1),filter .6s;position:relative;overflow:hidden}
+.project-card:hover .project-visual{transform:scale(1.035);filter:brightness(1.15)}
+.project-card .project-visual:after{content:"";position:absolute;inset:-100%;background:linear-gradient(110deg,transparent 45%,#ffbed01b 50%,transparent 55%);transform:translateX(-35%);transition:transform .9s;pointer-events:none}
+.project-card:hover .project-visual:after{transform:translateX(45%)}
+.statement{background:radial-gradient(ellipse at 50% 50%,#8b2a51,#260c1a 66%,#0b090e);overflow:hidden}
+.statement p{letter-spacing:-.065em}
+.contact{background:radial-gradient(ellipse at 85% 65%,#6c204033,transparent 55%)}
+@keyframes ghostDrift{to{transform:rotate(-4deg) translate3d(-4%,3%,0)}}
+@keyframes orbitPulse{to{transform:scale(1.1);opacity:.55}}
+@keyframes scanLight{0%,18%,100%{transform:translateX(-110%)}48%,62%{transform:translateX(120%)}}
+@keyframes cuePulse{50%{box-shadow:0 0 0 11px #ec8caf05;opacity:.6}}
+@keyframes roundBreath{50%{box-shadow:0 0 0 19px #e8a3bb07}}
+@keyframes impactRun{to{transform:translateX(-50%)}}
+@keyframes diamondSpin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.hero{min-height:100svh}.hero-giant-word{font-size:55vw;left:-18%;top:23%}.hero-orbit{width:100vw;height:100vw;right:-53%;top:20%}.hero-orbit-two{width:65vw;height:65vw;right:-30%;top:29%}.hero-cue{font-size:8px;letter-spacing:.11em;margin-bottom:15px}.hero-title{font-size:clamp(43px,11.6vw,78px);line-height:.95;margin:22px 0 38px}.hero-content{padding-bottom:clamp(110px,15vh,170px)}.hero .round-link{width:65px;height:65px;flex:none}.hero-bottomline{font-size:7px}.impact-strip{padding:13px 0}.impact-strip>div{font-size:15px}.about-grid{padding-top:55px}.expertise .service:hover,.expertise .service[aria-expanded=true]{padding-left:9px}}
+@media(prefers-reduced-motion:reduce){.hero-giant-word,.hero-orbit-two,.hero-scan,.cue-pulse,.hero .round-link,.impact-strip>div,.about .asterisk{animation:none!important}}
