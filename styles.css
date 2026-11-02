@@ -379,3 +379,23 @@ body{background:#0c0a0e}
 .contact .submit-btn{background:#d8a3b5;color:#1b0d15}
 .contact .submit-btn:hover{background:#f3e7ea}
 @media(max-width:700px){.hero-art{opacity:.57}.hero-title .outline,.hero-title .outline .accent{color:#f5f1ef!important}.hero-title{letter-spacing:-.073em}}
+
+/* DERZKO 6.1 — restrained wine depth, clearer mobile rhythm */
+body{background:#120b10}
+.about{background:radial-gradient(ellipse 75% 65% at 94% 35%,rgba(104,28,52,.23),transparent 75%),#120b10}
+.expertise{background:radial-gradient(ellipse 85% 65% at 8% 70%,rgba(102,25,51,.26),transparent 76%),linear-gradient(155deg,#160d14,#1c0d17 75%,#120b10)}
+.projects{background:radial-gradient(ellipse 70% 55% at 90% 15%,rgba(111,28,55,.20),transparent 78%),#120b10}
+.team-section{background:radial-gradient(ellipse 85% 65% at 10% 50%,rgba(116,30,57,.24),transparent 75%),linear-gradient(155deg,#160d14,#1b0d17 65%,#110b10)}
+.team-card{background:linear-gradient(150deg,rgba(83,27,48,.36),rgba(19,11,17,.91));border-color:rgba(164,94,119,.31)}
+.approach{background:radial-gradient(ellipse at 85% 15%,rgba(113,29,55,.24),transparent 65%),#1b0d17}
+.contact{background:radial-gradient(ellipse 70% 70% at 0% 25%,rgba(104,26,51,.30),transparent 77%),#130c12}
+@media(max-width:600px){
+ .section{padding-top:78px;padding-bottom:78px}
+ .projects-head{margin-top:48px;margin-bottom:32px}
+ .section-heading{margin-top:52px;margin-bottom:44px}
+ .team-section{padding-top:70px;padding-bottom:76px}
+ .team-card{min-height:170px;padding:17px 15px;gap:12px}
+ .team-card h3{font-size:clamp(15px,4vw,18px);line-height:1.17}
+ .team-card p{font-size:12px;line-height:1.5}
+ .team-grid{gap:10px}
+}
