@@ -231,3 +231,11 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 .back-top{font-size:9px;gap:8px}
 .back-top svg{width:36px!important;height:36px!important;padding:9px}
 }
+
+/* 5.0 preview: conceptual photo in festival tile, no other sections changed */
+.premiere-grid .project-card .poster-three.concept-photo{background:linear-gradient(180deg,rgba(12,5,13,.48) 0%,rgba(12,5,13,.08) 40%,rgba(12,5,13,.82) 100%),url("concept-festival.jpg") center center/cover no-repeat!important;}
+.premiere-grid .project-card .concept-photo:before{display:none!important}
+.premiere-grid .project-card .concept-photo:after{background:linear-gradient(180deg,rgba(12,5,13,.22),transparent 42%,rgba(12,5,13,.42));}
+.premiere-grid .project-card .concept-photo .poster-main{text-shadow:0 2px 28px #100a14cc;font-size:clamp(33px,4.3vw,72px)}
+.premiere-grid .project-card .concept-photo .poster-top,.premiere-grid .project-card .concept-photo .poster-foot{text-shadow:0 2px 12px #100a14}
+@media(max-width:520px){.premiere-grid .project-card .concept-photo .poster-main{font-size:clamp(36px,10vw,54px)}}
