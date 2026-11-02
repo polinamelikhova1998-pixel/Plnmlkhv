@@ -294,3 +294,16 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 @media (prefers-reduced-motion: reduce) {
   .section .reveal, .pink-takeover .reveal, .project-card.reveal { opacity:1!important;transform:none!important;transition:none!important; }
 }
+
+/* DERZKO 5.4: second original concept image */
+.premiere-grid .project-card .poster-two.concept-show{background:linear-gradient(180deg,rgba(12,5,13,.52) 0%,rgba(12,5,13,.06) 38%,rgba(12,5,13,.82) 100%),url("concept-show.jpg") center center/cover no-repeat!important;}
+.premiere-grid .project-card .concept-show:before{display:none!important}
+.premiere-grid .project-card .concept-show:after{background:linear-gradient(180deg,rgba(12,5,13,.18),transparent 40%,rgba(12,5,13,.48));}
+
+/* DERZKO. 5.5 — two images inside the single Energy of the Crowd concept */
+.premiere-grid .project-card .poster-two.concept-show{background:none!important;}
+.premiere-grid .project-card .concept-photo{isolation:isolate;}
+.premiere-grid .project-card .concept-photo .concept-second-photo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,5,13,.48),rgba(12,5,13,.07) 40%,rgba(12,5,13,.82)),url("concept-show.jpg") center center/cover no-repeat;z-index:-1;opacity:0;animation:derzkoPhotoSwap 12s ease-in-out infinite;pointer-events:none;}
+@keyframes derzkoPhotoSwap{0%,42%{opacity:0}50%,91%{opacity:1}100%{opacity:0}}
+.premiere-grid .project-card .concept-photo .concept-photo-count{position:absolute;right:18px;top:18px;z-index:2;color:#fff;font:600 10px/1.4 Arial,sans-serif;letter-spacing:.13em;text-shadow:0 2px 9px #000;pointer-events:none;}
+@media(prefers-reduced-motion:reduce){.premiere-grid .project-card .concept-photo .concept-second-photo{animation:none;opacity:0}}
