@@ -85,3 +85,32 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 @keyframes realSmokeC{from{transform:translate3d(-5%,9%,0) scale(1.02)}to{transform:translate3d(3%,-16%,0) scale(1.1)}}
 @media(max-width:520px){.intro-smoke i,.intro-smoke i:nth-child(2),.intro-smoke i:nth-child(3){bottom:-12%;height:65%;width:200%;left:-50%}.intro-smoke i:nth-child(2){left:-42%;bottom:-16%;height:72%;width:190%}.intro-smoke i:nth-child(3){left:-55%;bottom:-19%;height:60%;width:210%}}
 @media(prefers-reduced-motion:reduce){.intro-smoke{display:none!important}}
+
+/* DERZKO 4.0 — new main experience. Intro 3.6 styles above remain untouched. */
+.hero{background:radial-gradient(ellipse at 66% 38%,#551a32 0%,#210c1a 44%,#0b090e 78%)}
+.hero-glow{position:absolute;inset:auto 0 -35% 10%;height:65%;background:radial-gradient(ellipse,#7f24434a,transparent 66%);pointer-events:none;animation:heroGlow 10s ease-in-out infinite alternate}
+@keyframes heroGlow{to{transform:translateX(10%) scale(1.14);opacity:.55}}
+.hero-title .outline{transition:color .7s,-webkit-text-stroke-color .7s}.hero-title .outline:hover{color:#d982a2;-webkit-text-stroke-color:#d982a2}
+.about{background:#0c0a0e}.about .display em{color:#e38dab}.about .display{font-size:clamp(48px,8vw,140px);max-width:1100px}
+.about-grid{grid-template-columns:1.5fr .55fr;gap:7%}
+.expertise{background:linear-gradient(160deg,#180d17,#210e1b 75%,#100b10)}
+.services-hint{font-size:10px;letter-spacing:.2em;color:#b78d9e;margin:-40px 0 30px}
+.service{cursor:pointer;position:relative;outline-offset:3px}.service:focus-visible{outline:2px solid #e6a0b8}.service h3{transition:color .3s}.service:hover h3,.service[aria-expanded=true] h3{color:#f3afc8}
+.service-detail{display:block;font-size:clamp(12px,1.1vw,15px);line-height:1.7;letter-spacing:0;font-weight:500;color:#d6b9c6;max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease,margin .3s ease}
+.service[aria-expanded=true] .service-detail{max-height:120px;opacity:1;margin-top:16px}
+.service-mark{transition:transform .3s}.service[aria-expanded=true] .service-mark{transform:rotate(90deg)}
+.projects{background:#100b10}.projects-head .display{font-size:clamp(40px,6.5vw,108px)}
+.photo-placeholder{background:radial-gradient(ellipse at 72% 15%,#74334e66,transparent 48%),linear-gradient(145deg,#25111d,#120c13 62%,#391426);border:1px solid #6d354a;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,4vw,55px);isolation:isolate}
+.photo-placeholder:before{content:"";position:absolute;inset:-20%;background:linear-gradient(120deg,transparent 42%,#c85e8330 49%,transparent 55%);transform:translateX(-40%);transition:transform .8s ease;pointer-events:none}
+.project-card:hover .photo-placeholder:before{transform:translateX(30%)}
+.photo-placeholder:after{background:linear-gradient(0deg,#120c14aa,transparent 48%)}
+.placeholder-index,.placeholder-caption{font-size:11px;letter-spacing:.17em;color:#d6a4b6;font-weight:800;position:relative;z-index:1}
+.placeholder-label{font-size:clamp(44px,7vw,112px);font-weight:800;letter-spacing:-.085em;line-height:.92;color:#f0dce5;position:relative;z-index:1;overflow-wrap:anywhere}
+.project-card:not(.large) .placeholder-label{font-size:clamp(38px,5vw,70px)}
+.visual-corporate,.visual-festival,.visual-forum{background:radial-gradient(ellipse at 72% 15%,#74334e66,transparent 48%),linear-gradient(145deg,#25111d,#120c13 62%,#391426)}
+.visual-festival:before{inset:-20%;z-index:0;transform:translateX(-40%);background:linear-gradient(120deg,transparent 42%,#c85e8330 49%,transparent 55%)}
+.statement{background:radial-gradient(ellipse,#742345 0%,#240c1a 60%,#110b12)}
+.contact{background:radial-gradient(ellipse at 5% 30%,#391023 0%,#130c13 60%)}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr}.about .display{font-size:clamp(42px,10vw,75px)}.services-hint{margin:-20px 0 24px}.placeholder-label{font-size:clamp(40px,8vw,70px)}}
+@media(max-width:520px){.about .display{font-size:clamp(38px,9.8vw,58px)}.placeholder-label,.project-card:not(.large) .placeholder-label{font-size:clamp(39px,11vw,65px)}.photo-placeholder{padding:26px}.service-detail{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.hero-glow{animation:none}.photo-placeholder:before{transition:none}}
