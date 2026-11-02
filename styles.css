@@ -239,3 +239,58 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 .premiere-grid .project-card .concept-photo .poster-main{text-shadow:0 2px 28px #100a14cc;font-size:clamp(33px,4.3vw,72px)}
 .premiere-grid .project-card .concept-photo .poster-top,.premiere-grid .project-card .concept-photo .poster-foot{text-shadow:0 2px 12px #100a14}
 @media(max-width:520px){.premiere-grid .project-card .concept-photo .poster-main{font-size:clamp(36px,10vw,54px)}}
+
+/* DERZKO 5.1 — масштаб событий */
+.scale-section{background:#170a12;color:#fff;overflow:hidden;padding:clamp(72px,10vw,150px) max(5vw,24px)}
+.scale-inner{max-width:1480px;margin:auto}
+.scale-meta{display:flex;justify-content:space-between;gap:24px;font-size:clamp(10px,.9vw,13px);letter-spacing:.16em;color:#e9a0c0;font-weight:600}
+.scale-title{font-size:clamp(48px,8.4vw,150px)!important;line-height:.94!important;letter-spacing:-.065em;margin:clamp(50px,7vw,100px) 0!important;max-width:1450px}
+.scale-title em{color:#ed8cb7;font-style:normal}
+.scale-bottom{display:flex;justify-content:space-between;align-items:end;gap:40px;border-top:1px solid rgba(245,182,210,.3);padding-top:30px}
+.scale-bottom p{font-size:clamp(18px,2vw,29px);line-height:1.35;max-width:640px;margin:0}
+.scale-bottom span{font-size:clamp(10px,.95vw,13px);letter-spacing:.13em;line-height:1.7;color:#ed9cbe;text-align:right}
+@media(max-width:700px){.scale-section{padding:74px 20px 78px}.scale-meta{flex-direction:column;gap:8px;font-size:10px}.scale-title{font-size:clamp(39px,10vw,68px)!important;letter-spacing:-.055em;margin:54px 0!important}.scale-bottom{display:block}.scale-bottom p{font-size:18px}.scale-bottom span{display:block;text-align:left;margin-top:25px;font-size:10px}}
+
+/* DERZKO 5.2: verified team experience, not agency case count */
+.scale-proof{display:flex;align-items:end;gap:clamp(20px,4vw,70px);margin:0 0 clamp(42px,6vw,88px);padding:0 0 clamp(34px,4vw,60px);border-bottom:1px solid rgba(245,182,210,.3)}
+.scale-number{font-size:clamp(95px,19vw,310px);font-weight:900;line-height:.78;letter-spacing:-.095em;color:#ed8cb7;white-space:nowrap;font-family:inherit}
+.scale-plus{font-size:.47em;vertical-align:top;line-height:1}
+.scale-proof-copy{max-width:390px;padding-bottom:8px}
+.scale-proof-copy strong{font-size:clamp(20px,2.6vw,38px);letter-spacing:.035em}
+.scale-proof-copy p{font-size:clamp(15px,1.35vw,20px);line-height:1.5;color:#e9d6df}
+@media(max-width:700px){.scale-proof{display:block}.scale-number{display:block;font-size:clamp(80px,21vw,155px);margin-bottom:25px}.scale-proof-copy p{font-size:16px}.scale-title{margin-bottom:42px!important}}
+
+/* DERZKO 5.3 — cinematic scroll choreography; no changes to intro or hero */
+@media (prefers-reduced-motion: no-preference) {
+  .section .reveal, .pink-takeover .reveal {
+    transition-duration: 950ms;
+    transition-timing-function: cubic-bezier(.19,1,.22,1);
+    will-change: opacity, transform;
+  }
+  .section .reveal:not(.visible), .pink-takeover .reveal:not(.visible) {
+    opacity: 0;
+    transform: translate3d(0,42px,0);
+  }
+  .project-card.reveal:not(.visible) { transform: translate3d(0,64px,0) scale(.965); }
+  .project-card.reveal.visible { transform: translate3d(0,0,0) scale(1); }
+  .service.reveal:not(.visible), .journey-step.reveal:not(.visible) { transform: translate3d(0,26px,0); }
+  .scale-proof.reveal:not(.visible) { transform: translate3d(0,60px,0) scale(.94); }
+  .scale-proof.reveal.visible { transform: translate3d(0,0,0) scale(1); }
+  .project-card:nth-child(2), .service:nth-child(2), .journey-step:nth-child(2) { transition-delay: 90ms; }
+  .project-card:nth-child(3), .service:nth-child(3), .journey-step:nth-child(3) { transition-delay: 160ms; }
+  .project-card:nth-child(4), .service:nth-child(4), .journey-step:nth-child(4) { transition-delay: 220ms; }
+  .service:nth-child(5) { transition-delay: 280ms; }
+  .service:nth-child(6) { transition-delay: 340ms; }
+  .mobile-nav:not([hidden]) { animation: menu-fade-in .45s cubic-bezier(.19,1,.22,1) both; }
+  .mobile-nav:not([hidden]) a { animation: menu-link-in .65s cubic-bezier(.19,1,.22,1) both; }
+  .mobile-nav:not([hidden]) a:nth-child(2) { animation-delay: .06s; }
+  .mobile-nav:not([hidden]) a:nth-child(3) { animation-delay: .12s; }
+  .mobile-nav:not([hidden]) a:nth-child(4) { animation-delay: .18s; }
+  .mobile-nav:not([hidden]) a:nth-child(5) { animation-delay: .24s; }
+  .mobile-nav:not([hidden]) a:nth-child(6) { animation-delay: .30s; }
+  @keyframes menu-fade-in { from { opacity:0; } to { opacity:1; } }
+  @keyframes menu-link-in { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section .reveal, .pink-takeover .reveal, .project-card.reveal { opacity:1!important;transform:none!important;transition:none!important; }
+}
