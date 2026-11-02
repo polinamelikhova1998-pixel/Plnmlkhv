@@ -346,3 +346,36 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
   .hero-title .outline .accent { color: #f0a1c1; }
   .hero-art { opacity: .72; }
 }
+
+/* DERZKO 6.0 — black / wine editorial balance; existing layout and motion retained */
+:root{--bg:#0c0a0e;--wine:#54152b;--deep:#240d19;--ivory:#f5f1ef;--muted:#b9aeb3}
+body{background:#0c0a0e}
+.hero{background:radial-gradient(ellipse at 67% 45%,#45182c 0%,#1b0d17 43%,#09090c 81%)}
+.hero:after{background:linear-gradient(90deg,rgba(9,8,12,.70),transparent 78%),linear-gradient(0deg,#0c0a0e,transparent 42%)}
+.hero-title .outline,.hero-title .outline:hover,.hero-title .outline .accent{color:#f5f1ef!important;-webkit-text-stroke:0 transparent!important;text-shadow:0 5px 25px rgba(0,0,0,.4)}
+.hero-title .accent{color:#d889a7!important}
+.hero-ring,.hero-orbit{border-color:rgba(182,113,141,.17);box-shadow:none}
+.hero-giant-word{-webkit-text-stroke-color:rgba(183,125,150,.075)}
+.hero-scan{opacity:.4}
+.beam{opacity:.38}
+.beam-b{opacity:.22}.beam-c{opacity:.14}
+.impact-strip,.marquee{background:#592037}
+.impact-strip b,.marquee span{color:#f4e9ed}
+.about{background:radial-gradient(ellipse at 95% 30%,rgba(68,24,44,.16),transparent 65%)}
+.expertise{background:#130f15}
+.projects{background:radial-gradient(ellipse at 15% 45%,rgba(77,24,46,.12),transparent 70%)}
+.approach,.premiere-approach{background:#100d12}
+.team-section{background:linear-gradient(145deg,#130e14 0%,#1c1019 48%,#100d12 100%)}
+.team-card{background:linear-gradient(150deg,rgba(66,28,45,.38),rgba(14,12,17,.84));border-color:rgba(171,113,136,.24)}
+.team-card:hover{background:linear-gradient(150deg,rgba(84,34,55,.5),rgba(18,12,19,.9));border-color:rgba(208,148,170,.6)}
+.team-intro .display em,.team-outro em{color:#d39aad}
+.team-index{color:#c9a4b4}
+.team-card p,.team-intro p{color:#c9bdc3}
+.display em,.about .display em{color:#ce91a7}
+.premiere-grid .poster:not(.concept-photo){border-color:#613247}
+.pink-takeover{background:#b65b80}
+.pink-headline span{color:#fff6f7}
+.contact{background:radial-gradient(ellipse at 22% 43%,#351424 0%,#1b0e18 47%,#0e0b10 86%)}
+.contact .submit-btn{background:#d8a3b5;color:#1b0d15}
+.contact .submit-btn:hover{background:#f3e7ea}
+@media(max-width:700px){.hero-art{opacity:.57}.hero-title .outline,.hero-title .outline .accent{color:#f5f1ef!important}.hero-title{letter-spacing:-.073em}}
