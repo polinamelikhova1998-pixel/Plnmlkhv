@@ -44,18 +44,27 @@ async function start() {
       varying vec3 vNormal; varying vec3 vView; varying vec2 vUv;
       uniform float uTime;
       void main(){
-        vec3 N=normalize(vNormal), V=normalize(vView);
-        float fres=pow(1.-abs(dot(N,V)),2.6);
-        float edge=pow(abs(vUv.y-.5)*2.,11.);
-        float fineEdge=pow(abs(vUv.y-.5)*2.,28.);
+        vec3 N=normalize(vNormal);
+        vec3 V=normalize(vView);
         vec3 R=reflect(-V,N);
-        float studio=pow(max(dot(R,normalize(vec3(-.6,.72,.7))),0.),9.);
-        studio+=.72*pow(max(dot(R,normalize(vec3(.8,.18,.6))),0.),14.);
-        float streak=pow(max(0.,sin(vUv.x*16.+vUv.y*5.+uTime*.14)),16.)*.12;
-        vec3 wine=vec3(.22,.045,.115);
-        vec3 silver=vec3(.96,.82,.90);
-        vec3 color=mix(wine,silver,clamp(fres*.88+fineEdge*.66+studio*.60+streak,0.,1.));
-        float alpha=clamp(.16+fres*.53+edge*.30+studio*.21,.13,.91);
+        float facing=abs(dot(N,V));
+        float fres=pow(1.0-facing,3.1);
+        float borderDist=1.0-abs(vUv.y*2.0-1.0);
+        // Razor-thin optical rim with a second softer internal reflection.
+        float rim=exp(-borderDist*145.0);
+        float innerRim=exp(-borderDist*28.0);
+        float bandA=pow(max(dot(R,normalize(vec3(-0.68,0.25,0.68))),0.0),34.0);
+        float bandB=pow(max(dot(R,normalize(vec3(0.78,-0.18,0.62))),0.0),48.0);
+        float bandC=pow(max(dot(R,normalize(vec3(0.05,0.93,0.36))),0.0),65.0);
+        float studio=bandA*.80+bandB*.72+bandC*.36;
+        // Restrained wine-colored volume with elongated studio light streaks.
+        vec3 smoke=vec3(.105,.025,.064);
+        vec3 wine=vec3(.37,.078,.18);
+        vec3 silver=vec3(.99,.88,.94);
+        float glassLight=clamp(fres*.75+innerRim*.38+studio*.82,0.0,1.0);
+        vec3 color=mix(smoke,wine,clamp(.25+fres*.44+studio*.28,0.0,1.0));
+        color=mix(color,silver,clamp(glassLight*.65+rim*.94,0.0,1.0));
+        float alpha=clamp(.095+fres*.46+innerRim*.24+studio*.28+rim*.50,.08,.95);
         gl_FragColor=vec4(color,alpha);
       }`
   });
