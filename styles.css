@@ -457,3 +457,23 @@ body{background:#100b0f}
 .premiere-grid .project-card .cinematic-special{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('approved-exhibition.jpg')!important;background-size:cover,auto 100%!important;background-position:center,62% center!important}
 .premiere-grid .project-card .poster-main{font-size:clamp(39px,9vw,68px)!important;max-width:100%}
 }
+
+/* 7.3 FIX: these exact selectors override legacy poster-one/two/four photo rules.
+   Previously the old, more-specific selectors won despite the 7.2 updates. */
+.premiere-grid .project-card .poster-one.cinematic-forum {
+ background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('approved-forum.jpg')!important;
+ background-size:cover!important;background-position:center center!important;
+}
+.premiere-grid .project-card .poster-two.cinematic-gala {
+ background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('approved-gala.jpg')!important;
+ background-size:cover!important;background-position:center center!important;
+}
+.premiere-grid .project-card .poster-four.cinematic-special {
+ background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('approved-exhibition.jpg')!important;
+ background-size:cover!important;background-position:center center!important;
+}
+@media(max-width:700px){
+ .premiere-grid .project-card .poster-one.cinematic-forum {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('approved-forum.jpg')!important;background-size:cover!important;background-position:58% center!important}
+ .premiere-grid .project-card .poster-two.cinematic-gala {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('approved-gala.jpg')!important;background-size:cover!important;background-position:59% center!important}
+ .premiere-grid .project-card .poster-four.cinematic-special {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('approved-exhibition.jpg')!important;background-size:cover!important;background-position:61% center!important}
+}
