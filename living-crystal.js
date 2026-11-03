@@ -54,10 +54,10 @@ async function start() {
         float innerEdge=exp(-abs(d-.026)*105.0);
         vec3 R=reflect(-V,N);
         // Long studio strip lights reflected by the curved moving surface.
-        float a=pow(max(dot(R,normalize(vec3(-.63,.48,.61))),0.0),70.0);
-        float b=pow(max(dot(R,normalize(vec3(.72,-.22,.66))),0.0),95.0);
-        float c=pow(max(dot(R,normalize(vec3(.14,.88,.46))),0.0),125.0);
-        float stripe=clamp(a*.95+b*.85+c*.42,0.0,1.0);
+        float a=pow(max(dot(R,normalize(vec3(-.63,.48,.61))),0.0),26.0);
+        float b=pow(max(dot(R,normalize(vec3(.72,-.22,.66))),0.0),38.0);
+        float c=pow(max(dot(R,normalize(vec3(.14,.88,.46))),0.0),52.0);
+        float stripe=clamp(a*.72+b*.72+c*.38,0.0,1.0);
         // Dark wine reflections, not a colored opaque sheet.
         float wine=clamp(b*.8+fres*.23+edgeBody*.13,0.0,1.0);
         vec3 cool=vec3(.82,.86,.92);
@@ -66,10 +66,44 @@ async function start() {
         color=mix(color,vec3(.62,.18,.32),wine*.46);
         float glint=pow(max(dot(R,normalize(vec3(-.20,.75,.63))),0.0),210.0);
         color+=vec3(.27,.25,.30)*glint;
-        float alpha=clamp(.014+fres*.43+sharpEdge*.76+edgeBody*.20+innerEdge*.065+stripe*.40+glint*.20,.014,.88);
+        float alpha=clamp(.018+fres*.49+sharpEdge*.76+edgeBody*.23+innerEdge*.075+stripe*.43+glint*.13,.018,.88);
         gl_FragColor=vec4(color,alpha);
       }`
   });
+  // Thin, physically shaped side facets follow the same animated edge curves.
+  // They add a visible glass thickness without changing the ribbon silhouette.
+  const edgeThickness=.085;
+  const edgeGeometry=new THREE.BufferGeometry();
+  const edgePositions=new Float32Array((segX+1)*2*2*3);
+  const edgeIndices=[];
+  for(let side=0;side<2;side++){
+    const base=side*(segX+1)*2;
+    for(let i=0;i<segX;i++){
+      const a=base+i*2,b=a+2;
+      edgeIndices.push(a,b,a+1,b,b+1,a+1);
+    }
+  }
+  edgeGeometry.setAttribute('position',new THREE.BufferAttribute(edgePositions,3).setUsage(THREE.DynamicDrawUsage));
+  edgeGeometry.setIndex(edgeIndices);
+  const facetMaterial=new THREE.ShaderMaterial({
+    transparent:true,depthWrite:false,side:THREE.DoubleSide,
+    vertexShader:`varying vec3 vN; varying vec3 vV; varying float vX;
+      void main(){vec4 w=modelMatrix*vec4(position,1.0);vX=position.x;
+      vN=normalize(mat3(modelMatrix)*normal);vV=normalize(cameraPosition-w.xyz);
+      gl_Position=projectionMatrix*viewMatrix*w;}`,
+    fragmentShader:`precision highp float;
+      varying vec3 vN; varying vec3 vV; varying float vX;
+      void main(){
+        vec3 N=normalize(vN),V=normalize(vV);
+        float f=pow(1.0-abs(dot(N,V)),2.0);
+        float glimmer=.5+.5*sin(vX*1.7);
+        vec3 c=mix(vec3(.43,.16,.29),vec3(.97,.94,.99),.58+f*.35);
+        gl_FragColor=vec4(c,clamp(.22+f*.52+glimmer*.12,.0,.78));
+      }`
+  });
+  const facetMesh=new THREE.Mesh(edgeGeometry,facetMaterial);
+  facetMesh.renderOrder=2;
+  scene.add(facetMesh);
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
   const backMaterial=material.clone();backMaterial.side=THREE.BackSide;
@@ -95,6 +129,15 @@ async function start() {
         positions[idx+2]=v*half*Math.sin(twist)+.20*Math.sin(u*9+t*.26);
       }
     }
+    // Sidewalls track the exact same front-surface vertices at both edges.
+    for(let side=0;side<2;side++)for(let i=0;i<=segX;i++){
+      const vIndex=i*(segY+1)+(side===0?0:segY);
+      const src=vIndex*3, out=(side*(segX+1)*2+i*2)*3;
+      edgePositions[out]=positions[src];edgePositions[out+1]=positions[src+1];edgePositions[out+2]=positions[src+2];
+      edgePositions[out+3]=positions[src];edgePositions[out+4]=positions[src+1];edgePositions[out+5]=positions[src+2]-edgeThickness;
+    }
+    edgeGeometry.attributes.position.needsUpdate=true;
+    edgeGeometry.computeVertexNormals();
     geometry.attributes.position.needsUpdate=true;
     geometry.computeVertexNormals();
   }
@@ -121,5 +164,5 @@ async function start() {
     last=ms;material.uniforms.uTime.value=ms*.001;deform(ms*.001);renderer.render(scene,camera);
   }
   requestAnimationFrame(frame);
-  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();backMaterial.dispose();renderer.dispose()},{once:true});
+  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();edgeGeometry.dispose();facetMaterial.dispose();material.dispose();backMaterial.dispose();renderer.dispose()},{once:true});
 }
