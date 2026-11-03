@@ -706,3 +706,9 @@ body{background:#100b0f}
 .dz-about-content{position:relative;z-index:2!important}
 @media(max-width:700px){.dz-smoked-stage{height:245px!important}}
 @media(prefers-reduced-motion:reduce){.dz-living-canvas{display:none!important}.dz-smoked-stage .dz-smoked-ribbon{display:block!important}}
+
+/* DERZKO 11.2 — true edge-to-edge canvas without horizontal page overflow */
+.dz-about{overflow:hidden!important}
+.dz-smoked-stage{width:100vw!important;max-width:none!important;left:50%!important;transform:translateX(-50%)!important;margin-left:0!important;margin-right:0!important;overflow:hidden!important}
+.dz-living-canvas{width:100%!important;height:100%!important}
+@media(max-width:700px){.dz-smoked-stage{height:280px!important}}
