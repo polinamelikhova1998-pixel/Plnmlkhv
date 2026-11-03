@@ -672,3 +672,18 @@ body{background:#100b0f}
 .dz-smoked-stage.dz-motion-ready .dz-smoked-ribbon{opacity:0!important}
 @media(max-width:700px){.dz-smoked-stage{height:245px!important}.dz-about-content{margin-top:-23px!important}}
 @media(prefers-reduced-motion:reduce){.dz-smoked-stage .dz-glass-canvas{display:none!important}.dz-smoked-stage .dz-smoked-ribbon{opacity:1!important}}
+
+/* DERZKO 9.6 — one intact glass object, unified background, no canvas slicing */
+.derzko-philosophy,.dz-about{background:#160b13!important;background-image:none!important}
+.derzko-philosophy{border-bottom:0!important}
+.derzko-philosophy::after,.dz-about::before{display:none!important}
+.dz-about-top{border:0!important}
+.dz-smoked-stage{overflow:hidden!important;background:transparent!important;isolation:isolate!important;margin-top:0!important}
+.dz-smoked-stage::before,.dz-smoked-stage::after{display:none!important}
+.dz-smoked-ribbon{inset:0!important;background-image:url('smoked-glass-hd.png')!important;background-position:center!important;background-repeat:no-repeat!important;background-size:100% 100%!important;filter:none!important;opacity:1!important;animation:dz96Float 7.5s ease-in-out infinite alternate!important;transform-origin:50% 48%;will-change:transform}
+.dz-glass-canvas{display:none!important}
+.dz-about-content{z-index:3!important;isolation:isolate}
+.dz-about-kicker{position:relative;z-index:3}
+@keyframes dz96Float{0%{transform:translate3d(-1.2%,-7px,0) rotate(-.55deg) scale(1.018)}50%{transform:translate3d(.8%,2px,0) rotate(.25deg) scale(1.025)}100%{transform:translate3d(1.3%,9px,0) rotate(.6deg) scale(1.018)}}
+@media(max-width:700px){.derzko-philosophy{padding-bottom:38px!important}.dz-smoked-stage{height:245px!important}.dz-about-content{margin-top:0!important}.dz-smoked-ribbon{background-size:100% 100%!important}}
+@media(prefers-reduced-motion:reduce){.dz-smoked-ribbon{animation:none!important;transform:none!important}}

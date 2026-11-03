@@ -1,5 +1,1 @@
-DERZKO. 9.5 — FLOATING GLASS
-
-Загрузите все файлы в корень репозитория GitHub Pages.
-Изменения: HD-текстура стекла, canvas-анимация изгиба, единый фон и отсутствие разделительной линии.
-При отключённой анимации в настройках устройства показывается статичная HD-лента. Остальные разделы не изменены.
+DERZKO. 9.6 — One-piece Floating Glass. Removed sliced canvas deformation. Single transparent ribbon with gentle CSS motion; unified background. Other site sections unchanged. Upload all files to GitHub repository root.
