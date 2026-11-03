@@ -1,5 +1,1 @@
-DERZKO. 9.1 — seamless smoked glass
-
-Изменения только в стилях раздела «О нас»: мягкие переходы изображения в фон, лёгкое парение и изменение освещения, увеличенный зазор перед подписью. Остальные файлы сохранены из 9.0.
-
-Загрузите все файлы в корень репозитория GitHub Pages с заменой существующих.
+DERZKO 9.2 — clean glass ribbon. Upload all files to GitHub repository root. Only About ribbon styling and asset changed.
