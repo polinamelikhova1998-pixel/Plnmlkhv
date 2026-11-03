@@ -407,3 +407,23 @@ body{background:#120b10}
 /* DERZKO 6.3: clearly visible large background wordmark */
 .hero-giant-word{ -webkit-text-stroke:2px rgba(243,184,205,.58)!important; opacity:1!important; filter:drop-shadow(0 0 8px rgba(175,67,107,.12)); }
 @media(max-width:700px){.hero-giant-word{-webkit-text-stroke:1.8px rgba(250,198,217,.68)!important;}}
+
+/* DERZKO. 7.0 — CINEMATIC EDITION */
+body{background:#100b0f}
+.hero{background:radial-gradient(ellipse 72% 63% at 72% 48%,rgba(91,32,59,.35),transparent 76%),#100b0f}
+.hero-giant-word{-webkit-text-stroke:2px rgba(240,177,200,.68)!important;filter:drop-shadow(0 0 12px rgba(115,35,67,.22))}
+.hero-title .outline,.hero-title .outline:hover{color:#f6f2f2!important;-webkit-text-fill-color:#f6f2f2!important;-webkit-text-stroke:0!important}
+.hero-title .outline .accent{display:inline!important;white-space:nowrap;color:#d8a5b5!important;-webkit-text-fill-color:#d8a5b5!important}
+.hero-title .outline{white-space:nowrap}
+.team-section{background:radial-gradient(ellipse 75% 45% at 8% 25%,rgba(95,29,58,.21),transparent 82%),#120c11}
+.team-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.team-card{grid-column:span 3;min-height:208px;padding:clamp(20px,2.4vw,32px);background:linear-gradient(145deg,rgba(67,24,44,.53),rgba(18,12,19,.95));border-color:rgba(199,137,161,.25)}
+.team-card:nth-child(1),.team-card:nth-child(6){grid-column:span 6}
+.team-card h3{font-size:clamp(19px,2vw,30px);line-height:1.12}
+.team-card p{font-size:clamp(13px,1.1vw,15px);line-height:1.5}
+.team-card:hover{border-color:#c68a9e;background:linear-gradient(145deg,rgba(89,30,54,.68),rgba(20,11,20,.97))}
+.contact{background:radial-gradient(ellipse 78% 75% at 8% 25%,rgba(99,31,58,.31),transparent 78%),#100b0f}
+.contact .final-display em{color:#d8a5b5}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.team-card,.team-card:nth-child(1),.team-card:nth-child(6){grid-column:span 1}}
+@media(max-width:600px){.team-grid{grid-template-columns:1fr;gap:10px}.team-card,.team-card:nth-child(1),.team-card:nth-child(6){grid-column:auto;min-height:0;padding:22px 21px;gap:10px}.team-card h3{font-size:clamp(19px,5.3vw,24px);margin:8px 0 0}.team-card p{font-size:14px;line-height:1.5}.team-index{font-size:10px}.hero-title .outline{white-space:nowrap;font-size:.94em}.hero-giant-word{-webkit-text-stroke:1.8px rgba(242,183,205,.68)!important}.contact .final-display{font-size:clamp(36px,8.8vw,53px)}}
+@media(prefers-reduced-motion:no-preference){.team-card.reveal{transition-delay:0s}.team-card:nth-child(4n+2).reveal{transition-delay:.08s}.team-card:nth-child(4n+3).reveal{transition-delay:.16s}.team-card:nth-child(4n+4).reveal{transition-delay:.24s}}
