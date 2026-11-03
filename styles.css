@@ -542,3 +542,19 @@ body{background:#100b0f}
 /* 8.6: wine close ring, including mobile focus and tap states */
 .direction-modal .dm-close, .direction-modal .dm-close:hover, .direction-modal .dm-close:focus, .direction-modal .dm-close:focus-visible, .direction-modal .dm-close:active {border:1px solid #87334e!important;outline:none!important;box-shadow:0 0 0 2px #87334e!important;-webkit-tap-highlight-color:transparent;}
 .direction-modal .dm-close:focus-visible {box-shadow:0 0 0 3px #b65b78!important;}
+
+/* DERZKO 8.7: new standalone philosophy section */
+.derzko-philosophy{background:#160d13;color:#f8f1f3;padding:clamp(64px,8vw,120px) clamp(22px,6vw,96px);position:relative}
+.derzko-philosophy .philosophy-inner{max-width:1300px;margin:auto}
+.derzko-philosophy .philosophy-kicker{display:block;color:#bb8499;font-size:11px;font-weight:700;letter-spacing:.19em;margin-bottom:clamp(25px,4vw,52px)}
+.derzko-philosophy h2{font-family:inherit;font-weight:800;font-size:clamp(38px,6.5vw,100px);line-height:1.02;letter-spacing:-.055em;max-width:1150px;margin:0;text-transform:uppercase}
+.derzko-philosophy h2 em{font-style:normal;color:#b45a78}
+.derzko-philosophy .philosophy-rule{height:2px;width:48px;background:#984361;margin:clamp(25px,3vw,42px) 0}
+.derzko-philosophy .philosophy-copy{max-width:760px;display:grid;gap:14px}
+.derzko-philosophy .philosophy-copy p{margin:0;color:#e6d7df;font-size:clamp(16px,1.65vw,21px);line-height:1.55}
+.derzko-philosophy .philosophy-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:clamp(36px,5vw,72px);padding-top:28px;border-top:1px solid #50303d}
+.derzko-philosophy .philosophy-principles>div{min-width:0}
+.derzko-philosophy .philosophy-principles span{display:block;color:#b45a78;font-size:12px;font-weight:700;margin-bottom:12px}
+.derzko-philosophy .philosophy-principles h3{color:#f8f1f3;font-size:clamp(16px,1.7vw,23px);line-height:1.2;margin:0 0 8px;font-weight:800;letter-spacing:-.02em}
+.derzko-philosophy .philosophy-principles p{margin:0;color:#c5b4bc;font-size:14px;line-height:1.5}
+@media(max-width:700px){.derzko-philosophy{padding:58px 22px 62px}.derzko-philosophy h2{font-size:clamp(36px,10vw,56px);letter-spacing:-.045em}.derzko-philosophy .philosophy-principles{grid-template-columns:1fr;gap:24px;margin-top:36px;padding-top:24px}.derzko-philosophy .philosophy-principles>div{display:grid;grid-template-columns:30px 1fr;column-gap:14px}.derzko-philosophy .philosophy-principles span{grid-row:span 2;margin:2px 0 0}.derzko-philosophy .philosophy-principles h3{font-size:18px;margin:0 0 4px}.derzko-philosophy .philosophy-principles p{font-size:14px}}
