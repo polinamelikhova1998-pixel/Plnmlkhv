@@ -586,3 +586,11 @@ body{background:#100b0f}
 .dz-ribbon-motion{animation:dz89Float 12s ease-in-out infinite alternate;transform-origin:50% 50%}
 @keyframes dz89Float{from{transform:translateY(5px) rotate(-.35deg)}to{transform:translateY(-9px) rotate(.35deg)}}
 @media(max-width:700px){.dz-glass-ribbon{left:-3%;width:106%;top:0;height:100%}.dz-about-content h2{font-size:clamp(32px,8.1vw,52px);letter-spacing:-.062em;line-height:1.06;margin:20px 0 30px}.dz-glass-stage{height:245px}}
+
+/* DERZKO 9.0 — realistic smoked-glass ribbon */
+.dz-smoked-stage{background:radial-gradient(ellipse at 50% 55%,#32121f 0%,#160c13 72%);height:clamp(250px,31vw,420px);overflow:hidden}
+.dz-smoked-stage::before{display:none}
+.dz-smoked-ribbon{position:absolute;inset:-9% -5%;background-image:url("smoked-glass-ribbon.webp");background-repeat:no-repeat;background-position:center;background-size:100% 100%;filter:contrast(1.08) saturate(.85);animation:dzSmokedDrift 13s ease-in-out infinite alternate;will-change:transform}
+@keyframes dzSmokedDrift{from{transform:translate3d(-1.3%,5px,0) scale(1.025)}to{transform:translate3d(1.3%,-6px,0) scale(1.055)}}
+@media(max-width:700px){.dz-smoked-stage{height:245px;margin-top:12px}.dz-smoked-ribbon{inset:-3% -7%;background-size:100% 100%}}
+@media(prefers-reduced-motion:reduce){.dz-smoked-ribbon{animation:none;will-change:auto}}
