@@ -20,12 +20,17 @@ async function start() {
   const geometry=new THREE.BufferGeometry();
   const positions=new Float32Array((segX+1)*(segY+1)*3);
   const indices=[];
+  const uvs=new Float32Array((segX+1)*(segY+1)*2);
+  for(let i=0;i<=segX;i++)for(let j=0;j<=segY;j++){
+    const k=(i*(segY+1)+j)*2;uvs[k]=i/segX;uvs[k+1]=j/segY;
+  }
   for(let i=0;i<segX;i++)for(let j=0;j<segY;j++){
     let a=i*(segY+1)+j,b=(i+1)*(segY+1)+j;
     indices.push(a,b,a+1,b,b+1,a+1);
   }
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(indices);
+  geometry.setAttribute('uv',new THREE.BufferAttribute(uvs,2));
   // Clear crystal: nearly invisible interior, concentrated optical highlights.
   // A custom optical shader avoids the opaque pastel fill on mobile Safari.
   const material=new THREE.ShaderMaterial({
@@ -44,8 +49,8 @@ async function start() {
         float facing=abs(dot(N,V));
         float fres=pow(1.-facing,4.2);
         float edgeDistance=min(vUv.y,1.-vUv.y);
-        float edge=exp(-edgeDistance*290.);
-        float edgeHalo=exp(-edgeDistance*74.);
+        float edge=exp(-edgeDistance*170.);
+        float edgeHalo=exp(-edgeDistance*38.);
         vec3 R=reflect(-V,N);
         // Long, narrow studio strip reflections instead of circular white spots.
         float s1=pow(max(dot(R,normalize(vec3(-.67,.51,.54))),0.),185.);
@@ -57,7 +62,7 @@ async function start() {
         vec3 burgundy=vec3(.52,.10,.25);
         float wineLight=clamp(s2*.85+edgeHalo*.12,0.,1.);
         vec3 color=mix(white,burgundy,wineLight*.65);
-        float alpha=clamp(.008 + fres*.18 + edge*.80 + edgeHalo*.20 + strips*.52 + filament, .008,.92);
+        float alpha=clamp(.012 + fres*.24 + edge*.84 + edgeHalo*.12 + strips*.38 + filament, .012,.93);
         gl_FragColor=vec4(color,alpha);
       }`
   });

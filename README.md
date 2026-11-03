@@ -1,1 +1,1 @@
-DERZKO 11.8 PURE CRYSTAL. Clear optical shader, sharp edge reflections, faint wine glints, two surface layers. The animated geometry and full-bleed layout are unchanged. Upload files to repository root and replace existing files. Browser testing on iPhone still required.
+DERZKO 11.9 Crystal UV Fix. Исправлена первопричина сплошной заливки: добавлены UV-координаты геометрии. Анимация и размеры сохранены. Для проверки после загрузки обновите страницу.
