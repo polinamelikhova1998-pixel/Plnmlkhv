@@ -12,7 +12,7 @@ async function start() {
   renderer.setClearColor(0x000000,0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.55;
+  renderer.toneMappingExposure = 1.05;
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
   renderer.domElement.className='dz-living-canvas';
   stage.appendChild(renderer.domElement);
@@ -26,12 +26,15 @@ async function start() {
   }
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(indices);
+  // Thin smoked-crystal sheet: physically based transmission with subtle tint.
+  // Avoid opaque pink base and blown-out direct highlights.
   const material=new THREE.MeshPhysicalMaterial({
-    color:0x9d3156,metalness:0.12,roughness:0.085,
-    transmission:0.72,thickness:0.9,ior:1.47,
-    transparent:true,opacity:0.93,side:THREE.DoubleSide,
-    clearcoat:1,clearcoatRoughness:0.045,
-    specularIntensity:1.0,envMapIntensity:1.7,depthWrite:false
+    color:0xefd4df, metalness:0, roughness:0.045,
+    transmission:0.98, thickness:0.32, ior:1.52,
+    attenuationColor:new THREE.Color(0x5d102c), attenuationDistance:1.45,
+    side:THREE.DoubleSide, clearcoat:0.35, clearcoatRoughness:0.06,
+    envMapIntensity:2.3, depthWrite:false,
+    transparent:true, opacity:0.72
   });
   // Procedural studio environment for reflections; no external image assets.
   const envScene=new THREE.Scene();
@@ -40,28 +43,28 @@ async function start() {
     const m=new THREE.Mesh(new THREE.PlaneGeometry(sx,sy),new THREE.MeshBasicMaterial({color,side:THREE.DoubleSide}));
     m.position.set(x,y,z);m.rotation.z=rz;envScene.add(m);
   };
-  makePanel(0xffffff,-3.7,3,-3,1.0,8,.23);
-  makePanel(0xffb8d1,4.3,1,-2,1.3,7,-.26);
+  makePanel(0xf5dfe9,-3.7,3,-3,0.45,8,.23);
+  makePanel(0xe7a5c2,4.3,1,-2,0.55,7,-.26);
   makePanel(0x7e173c,0,-4,-2,12,2);
-  makePanel(0xffffff,0,4,-3,10,.25);
+  makePanel(0xf8eaf0,0,4,-3,10,.12);
   const pmrem=new THREE.PMREMGenerator(renderer);
   const env=pmrem.fromScene(envScene,0.08).texture;
   material.envMap=env;
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
-  scene.add(new THREE.AmbientLight(0xffffff,1.5));
-  const pink=new THREE.DirectionalLight(0xffb5d4,3.3);pink.position.set(-3,4,6);scene.add(pink);
-  const white=new THREE.DirectionalLight(0xffffff,3);white.position.set(4,1,5);scene.add(white);
+  scene.add(new THREE.AmbientLight(0xffffff,0.25));
+  const pink=new THREE.DirectionalLight(0xffb5d4,0.65);pink.position.set(-3,4,6);scene.add(pink);
+  const white=new THREE.DirectionalLight(0xffffff,0.85);white.position.set(4,1,5);scene.add(white);
   function deform(t){
     for(let i=0;i<=segX;i++){
       const u=i/segX, x=(u-.5)*width;
       const center=0.78*Math.sin(u*Math.PI*3.0+.15)+.20*Math.sin(u*Math.PI*5.3-.7);
       const phase=u*Math.PI*2.5+.45*Math.sin(u*Math.PI*2)+t*.24;
-      const twist=.86*Math.sin(phase)+.25*Math.sin(u*11-t*.19);
+      const twist=1.28*Math.sin(phase)+.38*Math.sin(u*11-t*.19);
       for(let j=0;j<=segY;j++){
         const v=(j/segY-.5)*2;
         const idx=(i*(segY+1)+j)*3;
-        const half=1.0+.17*Math.sin(u*Math.PI*2.2);
+        const half=1.06+.13*Math.sin(u*Math.PI*2.2);
         positions[idx]=x;
         positions[idx+1]=center+v*half*Math.cos(twist)+.07*Math.sin(t*.43+u*8);
         positions[idx+2]=v*half*Math.sin(twist)+.20*Math.sin(u*9+t*.26);

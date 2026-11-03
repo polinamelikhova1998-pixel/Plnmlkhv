@@ -1,7 +1,7 @@
-DERZKO. 11.0 — LIVING CRYSTAL
+DERZKO. 11.1 — Crystal Material
 
-Upload all files from this ZIP to the root of the existing GitHub Pages repository, replacing files with the same names.
+Upload all files to the root of the GitHub Pages repository, replacing the previous versions.
 
-The About section now contains an actual animated 3D ribbon surface rendered using Three.js / WebGL, with a physically based glass material and procedural studio reflections. It is a visual animation, not a real-world mechanical physics simulation. The page loads Three.js from jsDelivr, so internet access to that CDN is required. If WebGL or the CDN fails, the existing static glass image remains visible. Reduced-motion settings also use the static fallback.
+Only the 3D ribbon renderer (living-crystal.js) and its cache version in index.html were changed. The existing moving mesh is retained. The glass now uses lighter base color, high transmission, wine-colored attenuation, lower lighting intensity, and stronger twist.
 
-Verify motion and appearance in Safari on the target iPhone; not tested on physical iPhone hardware here.
+Note: transmission over a transparent WebGL canvas may differ across iOS/Safari GPU versions. This is a physically inspired realtime approximation, not offline path tracing. The static PNG remains as a fallback if the module fails or reduced motion is enabled.
