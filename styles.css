@@ -510,3 +510,19 @@ body{background:#100b0f}
 .directions-grid .direction-arrow::before{content:none!important}
 .directions-grid .direction-arrow::after{content:""!important;position:static!important;inset:auto!important;width:19px!important;height:19px!important;border:0!important;border-radius:0!important;background-color:#fff!important;transform:none!important;box-shadow:none!important}
 @media(max-width:600px){.directions-grid .direction-card{min-height:365px}.directions-grid .direction-content{margin:auto 0 62px!important;max-width:calc(100% - 10px)}.directions-grid .direction-desc{max-width:min(280px,calc(100% - 52px));margin-top:16px}.directions-grid .direction-arrow{right:18px!important;bottom:18px!important}}
+
+/* DERZKO 8.3 — distinct corporate event visual and cleaner mobile cards */
+.directions-grid .direction-corporate:before{
+ background-image:url('direction-corporate-event.jpg')!important;
+ background-position:center center!important;
+ background-repeat:no-repeat!important;
+ background-size:cover!important;
+}
+.directions-grid .direction-corporate{
+ background-image:none!important;
+}
+@media(max-width:600px){
+ .directions-grid .direction-card{min-height:350px}
+ .directions-grid .direction-content{margin:auto 0 54px!important}
+ .directions-grid .direction-desc{margin-top:13px}
+}
