@@ -32,15 +32,28 @@ async function start() {
     uniforms:{uTime:{value:0}},
     vertexShader:`varying vec3 vN; varying vec3 vV; varying vec2 vUv;
       void main(){vUv=uv;vec4 w=modelMatrix*vec4(position,1.);vN=normalize(mat3(modelMatrix)*normal);vV=normalize(cameraPosition-w.xyz);gl_Position=projectionMatrix*viewMatrix*w;}`,
-    fragmentShader:`precision highp float; varying vec3 vN;varying vec3 vV;varying vec2 vUv;uniform float uTime;
-      void main(){vec3 N=normalize(vN),V=normalize(vV);float facing=abs(dot(N,V));float f=pow(1.-facing,2.5);
-      float e=pow(abs(vUv.y*2.-1.),26.);float inner=pow(abs(vUv.y*2.-1.),9.);
-      vec3 R=reflect(-V,N);float a=pow(max(dot(R,normalize(vec3(-.65,.35,.67))),0.),22.);
-      float b=pow(max(dot(R,normalize(vec3(.7,.1,.7))),0.),32.);
-      vec3 wine=vec3(.17,.038,.09);vec3 bright=vec3(.95,.78,.86);
-      float highlight=clamp(e*.9+f*.65+a*.65+b*.45,0.,1.);
-      vec3 c=mix(wine,bright,highlight);float alpha=clamp(.19+f*.42+inner*.19+e*.40+a*.20+b*.15,.13,.93);
-      gl_FragColor=vec4(c,alpha);}`
+    fragmentShader:`precision highp float;
+      varying vec3 vN; varying vec3 vV; varying vec2 vUv; uniform float uTime;
+      void main(){
+        vec3 N=normalize(vN),V=normalize(vV);
+        float facing=clamp(abs(dot(N,V)),0.,1.);
+        float fres=pow(1.-facing,3.5);
+        float dist=1.-abs(vUv.y*2.-1.);
+        float rim=exp(-dist*115.);
+        float bevel=exp(-dist*26.);
+        vec3 R=reflect(-V,N);
+        float strip1=pow(max(dot(R,normalize(vec3(-.72,.46,.52))),0.),58.);
+        float strip2=pow(max(dot(R,normalize(vec3(.76,.08,.64))),0.),72.);
+        float strip3=pow(max(dot(R,normalize(vec3(.02,.92,.39))),0.),92.);
+        float reflection=strip1*.9+strip2*.75+strip3*.5;
+        float glint=clamp(rim*.95+bevel*.28+fres*.5+reflection*.88,0.,1.);
+        vec3 darkWine=vec3(.095,.019,.046);
+        vec3 crystal=vec3(.98,.94,.98);
+        vec3 color=mix(darkWine,crystal,clamp(glint*.88,0.,1.));
+        // Clear interior, brilliant thin edges and angled specular reflections.
+        float opacity=clamp(.045+fres*.29+bevel*.16+rim*.52+reflection*.37,.035,.91);
+        gl_FragColor=vec4(color,opacity);
+      }`
   });
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
