@@ -29,17 +29,19 @@
 <div class="dz-glass-stage" aria-hidden="true">
 <svg class="dz-glass-ribbon" viewBox="0 0 1440 460" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<linearGradient id="dzRibbonSurface" x1="0" y1="0" x2="0.28" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".63"/><stop offset=".15" stop-color="#e9e5eb" stop-opacity=".15"/><stop offset=".4" stop-color="#7c536c" stop-opacity=".12"/><stop offset=".62" stop-color="#f7edf3" stop-opacity=".35"/><stop offset=".85" stop-color="#74334f" stop-opacity=".20"/><stop offset="1" stop-color="#fff" stop-opacity=".36"/></linearGradient>
-<linearGradient id="dzRibbonEdge" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset=".5" stop-color="#d8b7c8" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity=".68"/></linearGradient>
-<linearGradient id="dzRibbonFlash" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity=".6"/><stop offset=".6" stop-color="#e2a6bd" stop-opacity=".26"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-<filter id="dzGlassDistort" x="-10%" y="-20%" width="120%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="2" seed="4" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/></filter>
+<linearGradient id="dz89Crystal" x1="0" y1="0" x2="0.2" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".54"/><stop offset=".18" stop-color="#e8e4ec" stop-opacity=".12"/><stop offset=".43" stop-color="#a1b0c4" stop-opacity=".07"/><stop offset=".65" stop-color="#fdf5fb" stop-opacity=".24"/><stop offset=".86" stop-color="#85435f" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".42"/></linearGradient>
+<linearGradient id="dz89Fold" x1="0" y1="0" x2="1" y2=".5"><stop stop-color="#ffffff" stop-opacity=".07"/><stop offset=".48" stop-color="#f9f1fa" stop-opacity=".55"/><stop offset=".57" stop-color="#b887a4" stop-opacity=".11"/><stop offset="1" stop-color="#ffffff" stop-opacity=".09"/></linearGradient>
+<linearGradient id="dz89Edge" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".92"/><stop offset=".5" stop-color="#e8d7e4" stop-opacity=".37"/><stop offset="1" stop-color="#fff" stop-opacity=".72"/></linearGradient>
+<linearGradient id="dz89Shine" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".35" stop-color="#fff" stop-opacity=".05"/><stop offset=".57" stop-color="#fff" stop-opacity=".88"/><stop offset=".7" stop-color="#fff" stop-opacity=".10"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
 </defs>
-<g class="dz-ribbon-motion" filter="url(#dzGlassDistort)">
-<path d="M-65 210 C155 24 275 20 480 175 C690 337 795 348 1015 161 C1170 29 1300 57 1505 174 L1505 308 C1310 195 1202 190 1050 317 C810 513 675 443 445 290 C255 165 141 190 -65 355 Z" fill="url(#dzRibbonSurface)" stroke="url(#dzRibbonEdge)" stroke-width="2.5"/>
-<path d="M-65 210 C155 24 275 20 480 175 C690 337 795 348 1015 161 C1170 29 1300 57 1505 174" fill="none" stroke="#fff8fc" stroke-opacity=".75" stroke-width="5"/>
-<path d="M-65 355 C141 190 255 165 445 290 C675 443 810 513 1050 317 C1202 190 1310 195 1505 308" fill="none" stroke="#f1d7e4" stroke-opacity=".56" stroke-width="4"/>
-<path class="dz-ribbon-glint" d="M-65 230 C155 44 275 40 480 195 C690 357 795 368 1015 181 C1170 49 1300 77 1505 194" fill="none" stroke="url(#dzRibbonFlash)" stroke-width="12" opacity=".7"/>
-<path d="M-65 281 C143 100 262 97 464 235 C678 398 797 403 1031 237 C1194 110 1301 127 1505 243" fill="none" stroke="#fff" stroke-opacity=".15" stroke-width="2"/>
+<g class="dz-ribbon-motion">
+<path d="M-70 190 C125 65 260 35 430 150 C590 258 690 375 815 294 C930 220 1005 55 1150 100 C1280 140 1350 195 1510 100 L1510 250 C1320 345 1240 270 1125 218 C1010 163 960 335 815 393 C675 451 575 336 415 255 C245 165 125 205 -70 340 Z" fill="url(#dz89Crystal)" stroke="url(#dz89Edge)" stroke-width="3"/>
+<path d="M430 150 C590 258 690 375 815 294 C930 220 1005 55 1150 100 C1280 140 1350 195 1510 100 L1510 250 C1320 345 1240 270 1125 218 C1010 163 960 335 815 393 C675 451 575 336 415 255 Z" fill="url(#dz89Fold)" opacity=".7"/>
+<path d="M-70 190 C125 65 260 35 430 150 C590 258 690 375 815 294 C930 220 1005 55 1150 100 C1280 140 1350 195 1510 100" fill="none" stroke="#fff7fc" stroke-opacity=".76" stroke-width="4"/>
+<path d="M-70 340 C125 205 245 165 415 255 C575 336 675 451 815 393 C960 335 1010 163 1125 218 C1240 270 1320 345 1510 250" fill="none" stroke="#f6e8f2" stroke-opacity=".63" stroke-width="3"/>
+<path d="M-70 240 C130 108 255 82 427 185 C590 289 690 402 815 325 C940 248 1006 90 1142 139 C1280 180 1350 230 1510 152" fill="none" stroke="#fff" stroke-opacity=".19" stroke-width="2"/>
+<path class="dz-ribbon-glint" d="M-70 200 C125 75 260 45 430 160 C590 268 690 385 815 304 C930 230 1005 65 1150 110 C1280 150 1350 205 1510 110" fill="none" stroke="url(#dz89Shine)" stroke-width="9"/>
+<path d="M810 294 C835 328 832 362 815 393" fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="2"/>
 </g></svg></div>
 <div class="dz-about-content"><span class="dz-about-kicker">DERZKO. / НОВОЕ ПОКОЛЕНИЕ СОБЫТИЙ</span><h2 id="dz-about-title">НОВОЕ ИМЯ.<br><em>СЕРЬЁЗНЫЙ ОПЫТ.</em></h2>
 <div class="dz-about-copy"><p>DERZKO. — новое креативное event-агентство, созданное командой с большим опытом организации событий разного формата и масштаба.</p><p>За нашими плечами — деловые форумы, корпоративные мероприятия, фестивали и частные события. Мы знаем, как превратить идею в продуманный проект, а сложную организацию — в уверенный результат.</p><p>Объединяем креативный подход, продюсирование и внимание к деталям. Берём на себя организационные задачи, чтобы вы могли сосредоточиться на главном.</p></div>

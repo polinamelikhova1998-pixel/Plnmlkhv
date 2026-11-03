@@ -580,3 +580,9 @@ body{background:#100b0f}
 .dz-about-link{display:inline-flex;align-items:center;gap:35px;border-bottom:1px solid #b86b88;padding:14px 0;font-size:12px;font-weight:800;letter-spacing:.09em}.dz-about-link span{font-size:22px;font-weight:400}
 @media(max-width:700px){.dz-about-top{margin:0 6%;font-size:8px}.dz-glass-stage{height:245px;margin-top:12px}.dz-glass-ribbon{width:160%;left:-30%;height:100%;top:0}.dz-about-content{margin:-24px 0 0;padding:0 6% 65px}.dz-about-content h2{font-size:clamp(40px,10vw,65px);margin:19px 0 27px}.dz-about-kicker{font-size:8px}.dz-about-copy{display:block}.dz-about-copy p,.dz-about-copy p:first-child{font-size:14px;line-height:1.75}.dz-about-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 16px;margin:35px 0 25px}.dz-about-steps strong{font-size:13px}.dz-about-steps small{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.dz-ribbon-motion,.dz-ribbon-glint{animation:none!important}}
+
+/* 8.9: asymmetric translucent folded glass and improved mobile headline */
+.dz-glass-ribbon{left:-1%;width:102%;filter:drop-shadow(0 18px 18px #0007) drop-shadow(0 0 15px #e8c3d01a)}
+.dz-ribbon-motion{animation:dz89Float 12s ease-in-out infinite alternate;transform-origin:50% 50%}
+@keyframes dz89Float{from{transform:translateY(5px) rotate(-.35deg)}to{transform:translateY(-9px) rotate(.35deg)}}
+@media(max-width:700px){.dz-glass-ribbon{left:-3%;width:106%;top:0;height:100%}.dz-about-content h2{font-size:clamp(32px,8.1vw,52px);letter-spacing:-.062em;line-height:1.06;margin:20px 0 30px}.dz-glass-stage{height:245px}}
