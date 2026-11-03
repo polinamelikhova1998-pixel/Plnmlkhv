@@ -1,1 +1,1 @@
-DERZKO 9.2 — clean glass ribbon. Upload all files to GitHub repository root. Only About ribbon styling and asset changed.
+DERZKO. 9.3 — Seamless Integration. Единый фон раздела «О нас», стеклянная лента без отдельной подложки, аккуратное наложение подписи. Остальные разделы сохранены.

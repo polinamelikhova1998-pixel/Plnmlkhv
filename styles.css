@@ -619,3 +619,29 @@ body{background:#100b0f}
 .dz-smoked-stage::after{display:none!important}
 @keyframes dz92Float{from{transform:translate3d(-.35%,2px,0) scale(1.015)}to{transform:translate3d(.35%,-3px,0) scale(1.025)}}
 @media(prefers-reduced-motion:reduce){.dz-smoked-ribbon{animation:none!important}}
+
+/* DERZKO 9.3 — single uninterrupted background; ribbon belongs to the page */
+.dz-about{
+  background:radial-gradient(ellipse 85% 44% at 51% 19%,#341420 0%,#210f19 43%,#140b12 77%,#110a10 100%)!important;
+}
+.dz-about-top{border-top-color:rgba(220,179,196,.22)}
+.dz-smoked-stage{background:none!important;margin-top:0!important;overflow:visible!important;isolation:auto!important;position:relative;z-index:1}
+.dz-smoked-ribbon{
+  background-image:url('smoked-glass-cutout.png')!important;
+  background-size:100% 100%!important;
+  background-repeat:no-repeat!important;
+  background-color:transparent!important;
+  inset:0!important;
+  filter:none!important;
+  opacity:1;
+  animation:dz93Float 18s ease-in-out infinite alternate!important;
+}
+.dz-about-content{z-index:2;margin-top:-20px!important}
+.dz-about-kicker{z-index:3}
+@keyframes dz93Float{from{transform:translate3d(0,2px,0)}to{transform:translate3d(0,-3px,0)}}
+@media(max-width:700px){
+  .dz-smoked-stage{height:245px!important}
+  .dz-about-content{margin-top:-23px!important}
+  .dz-about-kicker{padding-top:2px}
+}
+@media(prefers-reduced-motion:reduce){.dz-smoked-ribbon{animation:none!important}}
