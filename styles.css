@@ -712,3 +712,9 @@ body{background:#100b0f}
 .dz-smoked-stage{width:100vw!important;max-width:none!important;left:50%!important;transform:translateX(-50%)!important;margin-left:0!important;margin-right:0!important;overflow:hidden!important}
 .dz-living-canvas{width:100%!important;height:100%!important}
 @media(max-width:700px){.dz-smoked-stage{height:280px!important}}
+
+/* DERZKO 11.3 — seamless edge-to-edge crystal */
+.dz-about{overflow:hidden!important}
+.dz-smoked-stage{width:100vw!important;left:50%!important;transform:translateX(-50%)!important;max-width:none!important;overflow:hidden!important;background:transparent!important}
+.dz-about-top{border:0!important}
+@media(max-width:700px){.derzko-philosophy{padding-bottom:18px!important}.dz-smoked-stage{height:260px!important;margin-top:0!important}}

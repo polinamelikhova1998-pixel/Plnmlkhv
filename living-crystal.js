@@ -26,30 +26,39 @@ async function start() {
   }
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(indices);
-  // Thin smoked-crystal sheet: physically based transmission with subtle tint.
-  // Avoid opaque pink base and blown-out direct highlights.
-  const material=new THREE.MeshPhysicalMaterial({
-    color:0xf6eaf0, metalness:0, roughness:0.018,
-    transmission:1.0, thickness:0.68, ior:1.48,
-    attenuationColor:new THREE.Color(0x7d284b), attenuationDistance:3.8,
-    side:THREE.DoubleSide, clearcoat:1, clearcoatRoughness:0.015,
-    envMapIntensity:3.5, depthWrite:false,
-    transparent:false, opacity:1
+  // Translucent crystal with angle-dependent Fresnel rim and studio reflections.
+  const material=new THREE.ShaderMaterial({
+    transparent:true, side:THREE.DoubleSide, depthWrite:false,
+    uniforms:{uTime:{value:0}},
+    vertexShader:`
+      varying vec3 vNormal; varying vec3 vView; varying vec2 vUv;
+      void main(){
+        vUv=uv;
+        vec4 world=modelMatrix*vec4(position,1.);
+        vNormal=normalize(mat3(modelMatrix)*normal);
+        vView=normalize(cameraPosition-world.xyz);
+        gl_Position=projectionMatrix*viewMatrix*world;
+      }`,
+    fragmentShader:`
+      precision highp float;
+      varying vec3 vNormal; varying vec3 vView; varying vec2 vUv;
+      uniform float uTime;
+      void main(){
+        vec3 N=normalize(vNormal), V=normalize(vView);
+        float fres=pow(1.-abs(dot(N,V)),2.6);
+        float edge=pow(abs(vUv.y-.5)*2.,11.);
+        float fineEdge=pow(abs(vUv.y-.5)*2.,28.);
+        vec3 R=reflect(-V,N);
+        float studio=pow(max(dot(R,normalize(vec3(-.6,.72,.7))),0.),9.);
+        studio+=.72*pow(max(dot(R,normalize(vec3(.8,.18,.6))),0.),14.);
+        float streak=pow(max(0.,sin(vUv.x*16.+vUv.y*5.+uTime*.14)),16.)*.12;
+        vec3 wine=vec3(.22,.045,.115);
+        vec3 silver=vec3(.96,.82,.90);
+        vec3 color=mix(wine,silver,clamp(fres*.88+fineEdge*.66+studio*.60+streak,0.,1.));
+        float alpha=clamp(.16+fres*.53+edge*.30+studio*.21,.13,.91);
+        gl_FragColor=vec4(color,alpha);
+      }`
   });
-  // Procedural studio environment for reflections; no external image assets.
-  const envScene=new THREE.Scene();
-  envScene.background=new THREE.Color(0x12060e);
-  const makePanel=(color,x,y,z,sx,sy,rz=0)=>{
-    const m=new THREE.Mesh(new THREE.PlaneGeometry(sx,sy),new THREE.MeshBasicMaterial({color,side:THREE.DoubleSide}));
-    m.position.set(x,y,z);m.rotation.z=rz;envScene.add(m);
-  };
-  makePanel(0xf5dfe9,-3.7,3,-3,0.45,8,.23);
-  makePanel(0xe7a5c2,4.3,1,-2,0.55,7,-.26);
-  makePanel(0x7e173c,0,-4,-2,12,2);
-  makePanel(0xf8eaf0,0,4,-3,10,.12);
-  const pmrem=new THREE.PMREMGenerator(renderer);
-  const env=pmrem.fromScene(envScene,0.08).texture;
-  material.envMap=env;
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
   scene.add(new THREE.AmbientLight(0xffffff,0.25));
@@ -82,7 +91,7 @@ async function start() {
     camera.aspect=w/h;
     // Fit horizontal span to viewport, with both ribbon ends extending beyond its edges.
     const fov=THREE.MathUtils.degToRad(camera.fov);
-    const desiredVisibleWidth=width*.87;
+    const desiredVisibleWidth=width*.62;
     camera.position.z=desiredVisibleWidth/(2*Math.tan(fov/2)*camera.aspect);
     camera.updateProjectionMatrix();renderer.setSize(w,h,false);
   }
@@ -93,8 +102,8 @@ async function start() {
     if(!running)return;
     requestAnimationFrame(frame);
     if(!visible||document.hidden||ms-last<30)return;
-    last=ms;deform(ms*.001);renderer.render(scene,camera);
+    last=ms;material.uniforms.uTime.value=ms*.001;deform(ms*.001);renderer.render(scene,camera);
   }
   requestAnimationFrame(frame);
-  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();env.dispose();pmrem.dispose();geometry.dispose();material.dispose();renderer.dispose()},{once:true});
+  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();renderer.dispose()},{once:true});
 }
