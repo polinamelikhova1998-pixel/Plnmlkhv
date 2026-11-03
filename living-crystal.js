@@ -26,37 +26,48 @@ async function start() {
   }
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(indices);
-  // Reliable animated glass shader; no physical transmission pass required.
+  // Clear crystal: nearly invisible interior, concentrated optical highlights.
+  // A custom optical shader avoids the opaque pastel fill on mobile Safari.
   const material=new THREE.ShaderMaterial({
-    transparent:true,side:THREE.DoubleSide,depthWrite:false,
+    transparent:true, side:THREE.DoubleSide, depthWrite:false,
+    blending:THREE.NormalBlending,
     uniforms:{uTime:{value:0}},
-    vertexShader:`varying vec3 vN; varying vec3 vV; varying vec2 vUv;
-      void main(){vUv=uv;vec4 w=modelMatrix*vec4(position,1.);vN=normalize(mat3(modelMatrix)*normal);vV=normalize(cameraPosition-w.xyz);gl_Position=projectionMatrix*viewMatrix*w;}`,
+    vertexShader:`varying vec3 vN; varying vec3 vV; varying vec2 vUv; varying vec3 vWorld;
+      void main(){vUv=uv;vec4 w=modelMatrix*vec4(position,1.);vWorld=w.xyz;
+        vN=normalize(mat3(modelMatrix)*normal);vV=normalize(cameraPosition-w.xyz);
+        gl_Position=projectionMatrix*viewMatrix*w;}`,
     fragmentShader:`precision highp float;
-      varying vec3 vN; varying vec3 vV; varying vec2 vUv; uniform float uTime;
+      varying vec3 vN; varying vec3 vV; varying vec2 vUv; varying vec3 vWorld;
+      uniform float uTime;
       void main(){
-        vec3 N=normalize(vN),V=normalize(vV);
-        float facing=clamp(abs(dot(N,V)),0.,1.);
-        float fres=pow(1.-facing,3.5);
-        float dist=1.-abs(vUv.y*2.-1.);
-        float rim=exp(-dist*115.);
-        float bevel=exp(-dist*26.);
+        vec3 N=normalize(vN), V=normalize(vV);
+        float facing=abs(dot(N,V));
+        float fres=pow(1.-facing,4.2);
+        float edgeDistance=min(vUv.y,1.-vUv.y);
+        float edge=exp(-edgeDistance*290.);
+        float edgeHalo=exp(-edgeDistance*74.);
         vec3 R=reflect(-V,N);
-        float strip1=pow(max(dot(R,normalize(vec3(-.72,.46,.52))),0.),58.);
-        float strip2=pow(max(dot(R,normalize(vec3(.76,.08,.64))),0.),72.);
-        float strip3=pow(max(dot(R,normalize(vec3(.02,.92,.39))),0.),92.);
-        float reflection=strip1*.9+strip2*.75+strip3*.5;
-        float glint=clamp(rim*.95+bevel*.28+fres*.5+reflection*.88,0.,1.);
-        vec3 darkWine=vec3(.095,.019,.046);
-        vec3 crystal=vec3(.98,.94,.98);
-        vec3 color=mix(darkWine,crystal,clamp(glint*.88,0.,1.));
-        // Clear interior, brilliant thin edges and angled specular reflections.
-        float opacity=clamp(.045+fres*.29+bevel*.16+rim*.52+reflection*.37,.035,.91);
-        gl_FragColor=vec4(color,opacity);
+        // Long, narrow studio strip reflections instead of circular white spots.
+        float s1=pow(max(dot(R,normalize(vec3(-.67,.51,.54))),0.),185.);
+        float s2=pow(max(dot(R,normalize(vec3(.82,-.13,.55))),0.),210.);
+        float s3=pow(max(dot(R,normalize(vec3(.08,.93,.36))),0.),240.);
+        float strips=clamp(s1*.95+s2*.85+s3*.55,0.,1.);
+        float filament=pow(max(0.,sin(vUv.x*19.+vUv.y*4.)),44.)*.055;
+        vec3 white=vec3(.97,.96,1.);
+        vec3 burgundy=vec3(.52,.10,.25);
+        float wineLight=clamp(s2*.85+edgeHalo*.12,0.,1.);
+        vec3 color=mix(white,burgundy,wineLight*.65);
+        float alpha=clamp(.008 + fres*.18 + edge*.80 + edgeHalo*.20 + strips*.52 + filament, .008,.92);
+        gl_FragColor=vec4(color,alpha);
       }`
   });
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
+  const backMaterial=material.clone();backMaterial.side=THREE.BackSide;
+  backMaterial.opacity=.28;
+  const backMesh=new THREE.Mesh(geometry,backMaterial);
+  backMesh.position.z=-.075;
+  scene.add(backMesh);
   scene.add(new THREE.AmbientLight(0xffffff,0.25));
   const pink=new THREE.DirectionalLight(0xffb5d4,0.65);pink.position.set(-3,4,6);scene.add(pink);
   const white=new THREE.DirectionalLight(0xffffff,0.85);white.position.set(4,1,5);scene.add(white);
@@ -101,5 +112,5 @@ async function start() {
     last=ms;material.uniforms.uTime.value=ms*.001;deform(ms*.001);renderer.render(scene,camera);
   }
   requestAnimationFrame(frame);
-  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();renderer.dispose()},{once:true});
+  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();backMaterial.dispose();renderer.dispose()},{once:true});
 }

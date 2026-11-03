@@ -1,1 +1,1 @@
-DERZKO 11.7 Crystal Ribbon: материал прозрачного стекла, узкие световые отражения и винные кромки. Основа и движение версии 11.6 сохранены. Проверить на iPhone Safari после публикации.
+DERZKO 11.8 PURE CRYSTAL. Clear optical shader, sharp edge reflections, faint wine glints, two surface layers. The animated geometry and full-bleed layout are unchanged. Upload files to repository root and replace existing files. Browser testing on iPhone still required.
