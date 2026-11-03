@@ -46,30 +46,34 @@ async function start() {
       uniform float uTime;
       void main(){
         vec3 N=normalize(vN), V=normalize(vV);
-        float facing=abs(dot(N,V));
-        float fres=pow(1.-facing,4.2);
-        float edgeDistance=min(vUv.y,1.-vUv.y);
-        float edge=exp(-edgeDistance*170.);
-        float edgeHalo=exp(-edgeDistance*38.);
+        float ndv=abs(dot(N,V));
+        float fres=pow(1.0-ndv,3.0);
+        float d=min(vUv.y,1.0-vUv.y);
+        float sharpEdge=exp(-d*230.0);
+        float edgeBody=exp(-d*44.0);
+        float innerEdge=exp(-abs(d-.026)*105.0);
         vec3 R=reflect(-V,N);
-        // Long, narrow studio strip reflections instead of circular white spots.
-        float s1=pow(max(dot(R,normalize(vec3(-.67,.51,.54))),0.),185.);
-        float s2=pow(max(dot(R,normalize(vec3(.82,-.13,.55))),0.),210.);
-        float s3=pow(max(dot(R,normalize(vec3(.08,.93,.36))),0.),240.);
-        float strips=clamp(s1*.95+s2*.85+s3*.55,0.,1.);
-        float filament=pow(max(0.,sin(vUv.x*19.+vUv.y*4.)),44.)*.055;
-        vec3 white=vec3(.97,.96,1.);
-        vec3 burgundy=vec3(.52,.10,.25);
-        float wineLight=clamp(s2*.85+edgeHalo*.12,0.,1.);
-        vec3 color=mix(white,burgundy,wineLight*.65);
-        float alpha=clamp(.012 + fres*.24 + edge*.84 + edgeHalo*.12 + strips*.38 + filament, .012,.93);
+        // Long studio strip lights reflected by the curved moving surface.
+        float a=pow(max(dot(R,normalize(vec3(-.63,.48,.61))),0.0),70.0);
+        float b=pow(max(dot(R,normalize(vec3(.72,-.22,.66))),0.0),95.0);
+        float c=pow(max(dot(R,normalize(vec3(.14,.88,.46))),0.0),125.0);
+        float stripe=clamp(a*.95+b*.85+c*.42,0.0,1.0);
+        // Dark wine reflections, not a colored opaque sheet.
+        float wine=clamp(b*.8+fres*.23+edgeBody*.13,0.0,1.0);
+        vec3 cool=vec3(.82,.86,.92);
+        vec3 bright=vec3(.99,.97,1.0);
+        vec3 color=mix(cool,bright,clamp(sharpEdge+stripe,0.0,1.0));
+        color=mix(color,vec3(.62,.18,.32),wine*.46);
+        float glint=pow(max(dot(R,normalize(vec3(-.20,.75,.63))),0.0),210.0);
+        color+=vec3(.27,.25,.30)*glint;
+        float alpha=clamp(.014+fres*.43+sharpEdge*.76+edgeBody*.20+innerEdge*.065+stripe*.40+glint*.20,.014,.88);
         gl_FragColor=vec4(color,alpha);
       }`
   });
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
   const backMaterial=material.clone();backMaterial.side=THREE.BackSide;
-  backMaterial.opacity=.28;
+  backMaterial.opacity=.12;
   const backMesh=new THREE.Mesh(geometry,backMaterial);
   backMesh.position.z=-.075;
   scene.add(backMesh);
