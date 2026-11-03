@@ -718,3 +718,8 @@ body{background:#100b0f}
 .dz-smoked-stage{width:100vw!important;left:50%!important;transform:translateX(-50%)!important;max-width:none!important;overflow:hidden!important;background:transparent!important}
 .dz-about-top{border:0!important}
 @media(max-width:700px){.derzko-philosophy{padding-bottom:18px!important}.dz-smoked-stage{height:260px!important;margin-top:0!important}}
+
+/* 11.6: no old raster fallback; render only the animated glass canvas */
+.dz-smoked-stage .dz-smoked-ribbon{display:none!important}
+.dz-smoked-stage{background:transparent!important;overflow:hidden!important}
+.dz-smoked-stage canvas.dz-living-canvas{display:block!important;opacity:1!important}

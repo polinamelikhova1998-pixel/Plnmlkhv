@@ -1,7 +1,7 @@
 // DERZKO Living Crystal: actual animated 3D surface, no animated raster texture.
 const stage = document.querySelector('.dz-smoked-stage');
 if (stage && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  start().catch(err => console.warn('Living Crystal fallback:', err));
+  start().catch(err => { console.error('DERZKO crystal failed:',err); stage.dataset.crystalStatus='error'; });
 }
 async function start() {
   const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js');
@@ -26,41 +26,21 @@ async function start() {
   }
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(indices);
-  // Procedural studio light environment, reflected and refracted by physical glass.
-  const ew=512,eh=256;
-  const pixels=new Uint8Array(ew*eh*4);
-  const soft=(x,y,cx,cy,sx,sy)=>Math.exp(-((x-cx)/sx)**8-((y-cy)/sy)**4);
-  for(let y=0;y<eh;y++)for(let x=0;x<ew;x++){
-    const u=x/ew,v=y/eh;
-    const strip=1.00*soft(u,v,.18,.39,.032,.23)+.85*soft(u,v,.71,.42,.018,.32)+.58*soft(u,v,.48,.22,.16,.028);
-    const wine=.15*soft(u,v,.89,.61,.16,.27);
-    const k=(y*ew+x)*4;
-    pixels[k]=Math.min(255,9+strip*224+wine*115);
-    pixels[k+1]=Math.min(255,5+strip*210+wine*20);
-    pixels[k+2]=Math.min(255,12+strip*229+wine*57);
-    pixels[k+3]=255;
-  }
-  const envTexture=new THREE.DataTexture(pixels,ew,eh,THREE.RGBAFormat);
-  envTexture.mapping=THREE.EquirectangularReflectionMapping;
-  envTexture.colorSpace=THREE.SRGBColorSpace;
-  envTexture.needsUpdate=true;
-  const pmrem=new THREE.PMREMGenerator(renderer);
-  const env=pmrem.fromEquirectangular(envTexture);
-  scene.environment=env.texture;
-  const material=new THREE.MeshPhysicalMaterial({
-    color:0x713449,
-    metalness:0,
-    roughness:.055,
-    transmission:.94,
-    thickness:.85,
-    ior:1.49,
-    attenuationColor:new THREE.Color(0x5e1b36),
-    attenuationDistance:2.8,
-    envMapIntensity:2.1,
-    clearcoat:1,
-    clearcoatRoughness:.035,
-    side:THREE.DoubleSide,
-    transparent:false
+  // Reliable animated glass shader; no physical transmission pass required.
+  const material=new THREE.ShaderMaterial({
+    transparent:true,side:THREE.DoubleSide,depthWrite:false,
+    uniforms:{uTime:{value:0}},
+    vertexShader:`varying vec3 vN; varying vec3 vV; varying vec2 vUv;
+      void main(){vUv=uv;vec4 w=modelMatrix*vec4(position,1.);vN=normalize(mat3(modelMatrix)*normal);vV=normalize(cameraPosition-w.xyz);gl_Position=projectionMatrix*viewMatrix*w;}`,
+    fragmentShader:`precision highp float; varying vec3 vN;varying vec3 vV;varying vec2 vUv;uniform float uTime;
+      void main(){vec3 N=normalize(vN),V=normalize(vV);float facing=abs(dot(N,V));float f=pow(1.-facing,2.5);
+      float e=pow(abs(vUv.y*2.-1.),26.);float inner=pow(abs(vUv.y*2.-1.),9.);
+      vec3 R=reflect(-V,N);float a=pow(max(dot(R,normalize(vec3(-.65,.35,.67))),0.),22.);
+      float b=pow(max(dot(R,normalize(vec3(.7,.1,.7))),0.),32.);
+      vec3 wine=vec3(.17,.038,.09);vec3 bright=vec3(.95,.78,.86);
+      float highlight=clamp(e*.9+f*.65+a*.65+b*.45,0.,1.);
+      vec3 c=mix(wine,bright,highlight);float alpha=clamp(.19+f*.42+inner*.19+e*.40+a*.20+b*.15,.13,.93);
+      gl_FragColor=vec4(c,alpha);}`
   });
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
@@ -100,13 +80,13 @@ async function start() {
   }
   window.addEventListener('resize',resize,{passive:true});resize();deform(0);
   renderer.render(scene,camera);
-  stage.classList.add('dz-3d-ready');
+  stage.classList.add('dz-3d-ready'); stage.dataset.crystalStatus='running';
   function frame(ms){
     if(!running)return;
     requestAnimationFrame(frame);
     if(!visible||document.hidden||ms-last<30)return;
-    last=ms;deform(ms*.001);renderer.render(scene,camera);
+    last=ms;material.uniforms.uTime.value=ms*.001;deform(ms*.001);renderer.render(scene,camera);
   }
   requestAnimationFrame(frame);
-  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();envTexture.dispose();env.dispose();pmrem.dispose();renderer.dispose()},{once:true});
+  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();renderer.dispose()},{once:true});
 }
