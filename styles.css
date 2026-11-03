@@ -687,3 +687,12 @@ body{background:#100b0f}
 @keyframes dz96Float{0%{transform:translate3d(-1.2%,-7px,0) rotate(-.55deg) scale(1.018)}50%{transform:translate3d(.8%,2px,0) rotate(.25deg) scale(1.025)}100%{transform:translate3d(1.3%,9px,0) rotate(.6deg) scale(1.018)}}
 @media(max-width:700px){.derzko-philosophy{padding-bottom:38px!important}.dz-smoked-stage{height:245px!important}.dz-about-content{margin-top:0!important}.dz-smoked-ribbon{background-size:100% 100%!important}}
 @media(prefers-reduced-motion:reduce){.dz-smoked-ribbon{animation:none!important;transform:none!important}}
+
+/* DERZKO 10.0 — GPU-driven, one seamless glass surface */
+.dz-smoked-stage{position:relative!important;overflow:visible!important;isolation:auto!important;background:transparent!important}
+.dz-smoked-stage .dz-smoked-ribbon{animation:none!important;transform:none!important;filter:none!important;background-image:url('smoked-glass-hd.png')!important}
+.dz-glass-webgl{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;background:transparent;z-index:1}
+.dz-smoked-stage.dz-webgl-ready .dz-smoked-ribbon{visibility:hidden!important}
+.dz-about-top{border:0!important}
+.derzko-philosophy,.dz-about{background:#160b13!important;background-image:none!important}
+@media(prefers-reduced-motion:reduce){.dz-glass-webgl{display:none!important}.dz-smoked-stage .dz-smoked-ribbon{visibility:visible!important}}
