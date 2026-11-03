@@ -26,47 +26,41 @@ async function start() {
   }
   geometry.setAttribute('position',new THREE.BufferAttribute(positions,3).setUsage(THREE.DynamicDrawUsage));
   geometry.setIndex(indices);
-  // Translucent crystal with angle-dependent Fresnel rim and studio reflections.
-  const material=new THREE.ShaderMaterial({
-    transparent:true, side:THREE.DoubleSide, depthWrite:false,
-    uniforms:{uTime:{value:0}},
-    vertexShader:`
-      varying vec3 vNormal; varying vec3 vView; varying vec2 vUv;
-      void main(){
-        vUv=uv;
-        vec4 world=modelMatrix*vec4(position,1.);
-        vNormal=normalize(mat3(modelMatrix)*normal);
-        vView=normalize(cameraPosition-world.xyz);
-        gl_Position=projectionMatrix*viewMatrix*world;
-      }`,
-    fragmentShader:`
-      precision highp float;
-      varying vec3 vNormal; varying vec3 vView; varying vec2 vUv;
-      uniform float uTime;
-      void main(){
-        vec3 N=normalize(vNormal);
-        vec3 V=normalize(vView);
-        vec3 R=reflect(-V,N);
-        float facing=abs(dot(N,V));
-        float fres=pow(1.0-facing,3.1);
-        float borderDist=1.0-abs(vUv.y*2.0-1.0);
-        // Razor-thin optical rim with a second softer internal reflection.
-        float rim=exp(-borderDist*145.0);
-        float innerRim=exp(-borderDist*28.0);
-        float bandA=pow(max(dot(R,normalize(vec3(-0.68,0.25,0.68))),0.0),34.0);
-        float bandB=pow(max(dot(R,normalize(vec3(0.78,-0.18,0.62))),0.0),48.0);
-        float bandC=pow(max(dot(R,normalize(vec3(0.05,0.93,0.36))),0.0),65.0);
-        float studio=bandA*.80+bandB*.72+bandC*.36;
-        // Restrained wine-colored volume with elongated studio light streaks.
-        vec3 smoke=vec3(.105,.025,.064);
-        vec3 wine=vec3(.37,.078,.18);
-        vec3 silver=vec3(.99,.88,.94);
-        float glassLight=clamp(fres*.75+innerRim*.38+studio*.82,0.0,1.0);
-        vec3 color=mix(smoke,wine,clamp(.25+fres*.44+studio*.28,0.0,1.0));
-        color=mix(color,silver,clamp(glassLight*.65+rim*.94,0.0,1.0));
-        float alpha=clamp(.095+fres*.46+innerRim*.24+studio*.28+rim*.50,.08,.95);
-        gl_FragColor=vec4(color,alpha);
-      }`
+  // Procedural studio light environment, reflected and refracted by physical glass.
+  const ew=512,eh=256;
+  const pixels=new Uint8Array(ew*eh*4);
+  const soft=(x,y,cx,cy,sx,sy)=>Math.exp(-((x-cx)/sx)**8-((y-cy)/sy)**4);
+  for(let y=0;y<eh;y++)for(let x=0;x<ew;x++){
+    const u=x/ew,v=y/eh;
+    const strip=1.00*soft(u,v,.18,.39,.032,.23)+.85*soft(u,v,.71,.42,.018,.32)+.58*soft(u,v,.48,.22,.16,.028);
+    const wine=.15*soft(u,v,.89,.61,.16,.27);
+    const k=(y*ew+x)*4;
+    pixels[k]=Math.min(255,9+strip*224+wine*115);
+    pixels[k+1]=Math.min(255,5+strip*210+wine*20);
+    pixels[k+2]=Math.min(255,12+strip*229+wine*57);
+    pixels[k+3]=255;
+  }
+  const envTexture=new THREE.DataTexture(pixels,ew,eh,THREE.RGBAFormat);
+  envTexture.mapping=THREE.EquirectangularReflectionMapping;
+  envTexture.colorSpace=THREE.SRGBColorSpace;
+  envTexture.needsUpdate=true;
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  const env=pmrem.fromEquirectangular(envTexture);
+  scene.environment=env.texture;
+  const material=new THREE.MeshPhysicalMaterial({
+    color:0x713449,
+    metalness:0,
+    roughness:.055,
+    transmission:.94,
+    thickness:.85,
+    ior:1.49,
+    attenuationColor:new THREE.Color(0x5e1b36),
+    attenuationDistance:2.8,
+    envMapIntensity:2.1,
+    clearcoat:1,
+    clearcoatRoughness:.035,
+    side:THREE.DoubleSide,
+    transparent:false
   });
   const mesh=new THREE.Mesh(geometry,material);
   scene.add(mesh);
@@ -111,8 +105,8 @@ async function start() {
     if(!running)return;
     requestAnimationFrame(frame);
     if(!visible||document.hidden||ms-last<30)return;
-    last=ms;material.uniforms.uTime.value=ms*.001;deform(ms*.001);renderer.render(scene,camera);
+    last=ms;deform(ms*.001);renderer.render(scene,camera);
   }
   requestAnimationFrame(frame);
-  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();renderer.dispose()},{once:true});
+  window.addEventListener('pagehide',()=>{running=false;observer.disconnect();geometry.dispose();material.dispose();envTexture.dispose();env.dispose();pmrem.dispose();renderer.dispose()},{once:true});
 }
