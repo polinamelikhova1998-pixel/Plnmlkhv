@@ -1,5 +1,7 @@
-DERZKO. 10.0 — GPU Glass Motion
+DERZKO. 11.0 — LIVING CRYSTAL
 
-Upload all files to the root of the existing GitHub Pages repository.
-Changes are limited to the glass in the About section and its continuous background.
-The glass is animated as one WebGL mesh using a transparent high-resolution image texture. It is NOT physically simulated refractive 3D glass. Motion is visible when the section is onscreen and Reduce Motion is off. Falls back to static glass if WebGL is unavailable.
+Upload all files from this ZIP to the root of the existing GitHub Pages repository, replacing files with the same names.
+
+The About section now contains an actual animated 3D ribbon surface rendered using Three.js / WebGL, with a physically based glass material and procedural studio reflections. It is a visual animation, not a real-world mechanical physics simulation. The page loads Three.js from jsDelivr, so internet access to that CDN is required. If WebGL or the CDN fails, the existing static glass image remains visible. Reduced-motion settings also use the static fallback.
+
+Verify motion and appearance in Safari on the target iPhone; not tested on physical iPhone hardware here.

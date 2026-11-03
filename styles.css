@@ -696,3 +696,13 @@ body{background:#100b0f}
 .dz-about-top{border:0!important}
 .derzko-philosophy,.dz-about{background:#160b13!important;background-image:none!important}
 @media(prefers-reduced-motion:reduce){.dz-glass-webgl{display:none!important}.dz-smoked-stage .dz-smoked-ribbon{visibility:visible!important}}
+
+/* DERZKO 11.0: seamless physically shaded 3D ribbon */
+.dz-about-top{border-top:0!important;border-bottom:0!important}
+.dz-smoked-stage{position:relative!important;overflow:visible!important;background:none!important;isolation:auto!important;height:clamp(270px,33vw,430px)!important}
+.dz-smoked-stage .dz-smoked-ribbon{background-image:url('smoked-glass-hd.png')!important;background-size:100% 100%!important;animation:none!important;filter:none!important}
+.dz-smoked-stage.dz-3d-ready .dz-smoked-ribbon{display:none!important}
+.dz-living-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:1}
+.dz-about-content{position:relative;z-index:2!important}
+@media(max-width:700px){.dz-smoked-stage{height:245px!important}}
+@media(prefers-reduced-motion:reduce){.dz-living-canvas{display:none!important}.dz-smoked-stage .dz-smoked-ribbon{display:block!important}}
