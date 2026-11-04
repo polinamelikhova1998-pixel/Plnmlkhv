@@ -1,4 +1,1 @@
-DERZKO 12.5 — About + Team continuous section. Removed old CTA and standalone team headline. Crystal animation files unchanged.
-
-
-12.6: Mobile content safe gutters 24px; full-bleed animated glass unchanged.
+DERZKO 13.2 — финальная сцена. Загрузите все файлы из архива в корень GitHub Pages. Исправлены слои света и центрирование мобильного финала; сохранены остальные разделы. Контактная форма работает через почтовое приложение, без серверной отправки.
