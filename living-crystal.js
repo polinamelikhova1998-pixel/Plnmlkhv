@@ -47,26 +47,23 @@ async function start() {
       void main(){
         vec3 N=normalize(vN), V=normalize(vV);
         float ndv=abs(dot(N,V));
-        float fres=pow(1.0-ndv,3.0);
+        float fres=pow(1.0-ndv,3.7);
         float d=min(vUv.y,1.0-vUv.y);
-        float sharpEdge=exp(-d*230.0);
-        float edgeBody=exp(-d*44.0);
-        float innerEdge=exp(-abs(d-.026)*105.0);
+        // Crystal-clear core; precise bright perimeter and a narrow inner caustic.
+        float edge=exp(-d*285.0);
+        float bevel=exp(-d*73.0);
+        float caustic=exp(-pow((d-.035)*105.0,2.0));
         vec3 R=reflect(-V,N);
-        // Long studio strip lights reflected by the curved moving surface.
-        float a=pow(max(dot(R,normalize(vec3(-.63,.48,.61))),0.0),26.0);
-        float b=pow(max(dot(R,normalize(vec3(.72,-.22,.66))),0.0),38.0);
-        float c=pow(max(dot(R,normalize(vec3(.14,.88,.46))),0.0),52.0);
-        float stripe=clamp(a*.72+b*.72+c*.38,0.0,1.0);
-        // Dark wine reflections, not a colored opaque sheet.
-        float wine=clamp(b*.8+fres*.23+edgeBody*.13,0.0,1.0);
-        vec3 cool=vec3(.82,.86,.92);
-        vec3 bright=vec3(.99,.97,1.0);
-        vec3 color=mix(cool,bright,clamp(sharpEdge+stripe,0.0,1.0));
-        color=mix(color,vec3(.62,.18,.32),wine*.46);
-        float glint=pow(max(dot(R,normalize(vec3(-.20,.75,.63))),0.0),210.0);
-        color+=vec3(.27,.25,.30)*glint;
-        float alpha=clamp(.018+fres*.49+sharpEdge*.76+edgeBody*.23+innerEdge*.075+stripe*.43+glint*.13,.018,.88);
+        // Narrow elongated studio reflections instead of diffuse white blobs.
+        float a=pow(max(dot(R,normalize(vec3(-.63,.48,.61))),0.0),105.0);
+        float b=pow(max(dot(R,normalize(vec3(.72,-.22,.66))),0.0),120.0);
+        float c=pow(max(dot(R,normalize(vec3(.14,.88,.46))),0.0),145.0);
+        float streak=clamp(a*.95+b*.86+c*.56,0.0,1.0);
+        float wine=clamp(b*.72+fres*.16+bevel*.10,0.0,1.0);
+        vec3 silver=vec3(.91,.94,1.0);
+        vec3 color=mix(silver,vec3(.65,.27,.42),wine*.32);
+        color=mix(color,vec3(1.0,.98,1.0),clamp(edge*.86+streak*.62,0.0,1.0));
+        float alpha=clamp(.009+fres*.37+edge*.79+bevel*.14+caustic*.065+streak*.31,.009,.86);
         gl_FragColor=vec4(color,alpha);
       }`
   });
@@ -97,8 +94,8 @@ async function start() {
         vec3 N=normalize(vN),V=normalize(vV);
         float f=pow(1.0-abs(dot(N,V)),2.0);
         float glimmer=.5+.5*sin(vX*1.7);
-        vec3 c=mix(vec3(.43,.16,.29),vec3(.97,.94,.99),.58+f*.35);
-        gl_FragColor=vec4(c,clamp(.22+f*.52+glimmer*.12,.0,.78));
+        vec3 c=mix(vec3(.36,.14,.27),vec3(.96,.96,1.0),.65+f*.25);
+        gl_FragColor=vec4(c,clamp(.12+f*.56+glimmer*.06,.0,.70));
       }`
   });
   const facetMesh=new THREE.Mesh(edgeGeometry,facetMaterial);
