@@ -735,3 +735,13 @@ body{background:#100b0f}
 .dz-team-roles>div{display:flex;gap:14px;align-items:flex-start;border-top:1px solid rgba(211,142,170,.32);padding:20px 0;min-width:0;font-size:clamp(12px,1.8vw,17px);font-weight:700;line-height:1.35}
 .dz-team-roles span{font-size:12px;color:#c58ca5;white-space:nowrap;font-weight:500}
 @media(max-width:600px){.dz-team-compact{padding:0 0 24px;margin-top:55px}.dz-team-roles{grid-template-columns:1fr}.dz-team-roles>div{padding:15px 0}.dz-team-intro h3{font-size:30px}}
+
+/* 12.4 — actual unified About / Team, tighter mobile rhythm */
+.dz-about-content{padding-bottom:0!important}
+.dz-team-compact{margin:28px auto 0!important;padding:0 5.5% 60px!important;max-width:1500px!important}
+.dz-team-intro{border:0!important;padding:0!important;margin:0 0 18px!important}
+.dz-team-intro>span{margin-bottom:8px!important;font-size:10px!important}
+.dz-team-intro p{font-size:clamp(14px,2vw,17px)!important;max-width:650px}
+.dz-team-roles{gap:0 28px!important}
+.dz-team-roles>div{border-top-color:rgba(211,142,170,.22)!important;padding:16px 0!important}
+@media(max-width:700px){.dz-about-content{padding-bottom:0!important}.dz-team-compact{margin-top:24px!important;padding:0 6% 36px!important}.dz-team-intro{margin-bottom:14px!important}.dz-team-roles{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 14px!important}.dz-team-roles>div{font-size:11px!important;gap:6px!important;padding:14px 0!important}.dz-team-roles span{font-size:9px!important}}
