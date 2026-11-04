@@ -846,3 +846,21 @@ section.finale .finale-smoke-front{opacity:.7!important;filter:blur(6px)!importa
 @keyframes dzFogFloatThree{from{transform:translate3d(-4%,4%,0) scale(1.12,.92)}to{transform:translate3d(8%,-3%,0) scale(1.02,1.1)}}
 @media(max-width:600px){section.finale .finale-smoke{height:42%!important;bottom:-4%!important}section.finale .finale-smoke-back{bottom:-2%!important}section.finale .finale-smoke-mid{bottom:-6%!important}section.finale .finale-smoke-front{bottom:-12%!important}}
 @media(prefers-reduced-motion:reduce){section.finale .finale-smoke{animation:none!important}}
+
+/* DERZKO 13.6: low textured stage fog and narrow volumetric beams */
+section.finale{background:radial-gradient(ellipse at 50% 52%,#1e0b16 0%,#11080e 58%,#09070b 100%)!important;min-height:78svh!important}
+section.finale .finale-atmosphere{background:transparent!important}
+section.finale .finale-beam{top:-12%!important;height:92%!important;width:36%!important;border-radius:50% 50% 45% 45%!important;clip-path:none!important;filter:blur(23px)!important;opacity:.78!important;mix-blend-mode:screen!important;background:radial-gradient(ellipse 42% 75% at 50% 5%,rgba(203,91,132,.52) 0%,rgba(130,42,83,.28) 31%,rgba(76,23,52,.07) 68%,transparent 100%)!important;mask-image:linear-gradient(to bottom,#000 0%,#0009 52%,transparent 90%)!important;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#0009 52%,transparent 90%)!important}
+section.finale .finale-beam-left{left:5%!important;transform-origin:50% 0!important}
+section.finale .finale-beam-right{right:5%!important;transform-origin:50% 0!important}
+section.finale .finale-beam-center{left:37%!important;width:26%!important;opacity:.35!important}
+section.finale .finale-spot{opacity:.46!important;filter:blur(24px)!important}
+section.finale .finale-haze{opacity:.13!important}
+section.finale .finale-floor{opacity:.08!important}
+section.finale .finale-smoke{left:-15%!important;width:130%!important;height:25%!important;bottom:-1%!important;opacity:.72!important;filter:blur(4px)!important;background:url('finale-fog-texture.png') center bottom/100% 100% no-repeat!important;mix-blend-mode:screen!important;mask-image:linear-gradient(to top,#000 0%,#000 38%,transparent 100%)!important;-webkit-mask-image:linear-gradient(to top,#000 0%,#000 38%,transparent 100%)!important}
+section.finale .finale-smoke-back{bottom:1%!important;opacity:.46!important;filter:blur(17px)!important}
+section.finale .finale-smoke-mid{bottom:-3%!important;opacity:.84!important;filter:blur(7px)!important}
+section.finale .finale-smoke-front{bottom:-6%!important;opacity:.70!important;filter:blur(3px)!important}
+section.finale .finale-center{z-index:4!important}
+@media(max-width:600px){section.finale{min-height:76svh!important;padding-top:20px!important}section.finale .finale-beam{width:55%!important;filter:blur(21px)!important}section.finale .finale-beam-left{left:-7%!important}section.finale .finale-beam-right{right:-7%!important}section.finale .finale-beam-center{left:34%!important;width:32%!important}section.finale .finale-smoke{height:24%!important;bottom:-1%!important}}
+@media(prefers-reduced-motion:reduce){section.finale .finale-beam,section.finale .finale-smoke,section.finale .finale-heading::after{animation:none!important}}
