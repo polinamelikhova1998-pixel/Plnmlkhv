@@ -815,3 +815,19 @@ section.finale .finale-cta span::after{content:"";width:17px;height:17px;display
 section.finale .finale-cta{background:linear-gradient(115deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 60%,rgba(255,255,255,.06))!important;border:1px solid rgba(226,170,191,.55)!important;box-shadow:inset 0 1px rgba(255,255,255,.16),0 8px 38px rgba(48,10,29,.26)!important}
 @media(max-width:600px){section.finale{min-height:78svh!important;padding:20px 5.5% 24px!important}section.finale .finale-center{padding:44px 0 55px!important}section.finale .finale-beam{width:90%!important;filter:blur(35px)!important}section.finale .finale-beam-left{left:-38%!important}section.finale .finale-beam-right{right:-38%!important}section.finale .finale-beam-center{left:5%!important;width:90%!important}}
 @media(prefers-reduced-motion:reduce){section.finale .finale-beam,section.finale .finale-haze{animation:none!important}}
+
+/* 13.4: cinematic wine-colored light, drifting low fog, subtle heading shimmer */
+section.finale{background:radial-gradient(ellipse at 50% 64%,#2e101f 0%,#170a13 58%,#0d080e 100%)!important}
+section.finale .finale-beam{opacity:.85!important;filter:blur(19px)!important;background:linear-gradient(180deg,rgba(196,78,116,.39) 0%,rgba(145,39,81,.27) 35%,rgba(91,24,55,.10) 73%,transparent 100%)!important;mask-image:linear-gradient(to bottom,#000 0%,#000b 48%,transparent 100%)!important;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000b 48%,transparent 100%)!important}
+section.finale .finale-beam-center{opacity:.48!important}
+section.finale .finale-smoke{position:absolute;left:-32%;bottom:-16%;width:164%;height:45%;z-index:2;pointer-events:none;opacity:.55;filter:blur(28px);border-radius:50%;will-change:transform;mix-blend-mode:screen;background:radial-gradient(ellipse 33% 39% at 18% 72%,rgba(139,48,81,.29),transparent 96%),radial-gradient(ellipse 31% 43% at 49% 63%,rgba(179,77,112,.22),transparent 96%),radial-gradient(ellipse 32% 38% at 82% 76%,rgba(131,43,78,.30),transparent 96%)}
+section.finale .finale-smoke-back{animation:dzFogDriftA 24s ease-in-out infinite alternate;bottom:-12%;opacity:.48;filter:blur(42px)}
+section.finale .finale-smoke-mid{animation:dzFogDriftB 19s ease-in-out infinite alternate;bottom:-19%;opacity:.65;transform:scaleY(.8);filter:blur(24px)}
+section.finale .finale-smoke-front{animation:dzFogDriftA 31s ease-in-out infinite alternate-reverse;bottom:-23%;opacity:.35;filter:blur(17px)}
+@keyframes dzFogDriftA{from{transform:translate3d(-7%,1%,0) scale(1,.9)}to{transform:translate3d(8%,-4%,0) scale(1.08,1.08)}}
+@keyframes dzFogDriftB{from{transform:translate3d(7%,0,0) scale(1.1,.86)}to{transform:translate3d(-8%,-5%,0) scale(.98,1.12)}}
+section.finale .finale-heading{position:relative;color:#fff!important;isolation:isolate}
+section.finale .finale-heading::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(108deg,transparent 35%,rgba(255,220,233,.03) 43%,rgba(255,236,244,.38) 50%,rgba(255,220,233,.03) 57%,transparent 65%);background-size:240% 100%;background-position:125% 0;mix-blend-mode:screen;-webkit-background-clip:text;background-clip:text;animation:dzTitleGlint 9s ease-in-out infinite}
+@keyframes dzTitleGlint{0%,22%{background-position:125% 0}47%,100%{background-position:-125% 0}}
+@media(max-width:600px){section.finale .finale-beam{filter:blur(22px)!important;opacity:.8!important}section.finale .finale-smoke{height:38%;bottom:-13%}section.finale .finale-smoke-front{bottom:-20%}}
+@media(prefers-reduced-motion:reduce){section.finale .finale-smoke,section.finale .finale-heading::after{animation:none!important}}
