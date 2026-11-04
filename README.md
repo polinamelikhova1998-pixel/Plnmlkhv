@@ -1,3 +1,1 @@
-DERZKO 12.3 — Clean Structure. Удалён дублирующий раздел Экспертиза; команда интегрирована в О нас; удалены повторяющиеся четыре этапа; направления сохранены карточками, обновлён заголовок и навигация. Хрустальная лента и её анимация перенесены из 12.2 без изменений. Загружайте распакованные файлы в корень GitHub репозитория.
-
-12.4: Removed redundant about CTA and duplicate team headline, tightened spacing, kept crystal JS unchanged.
+DERZKO 12.5 — About + Team continuous section. Removed old CTA and standalone team headline. Crystal animation files unchanged.

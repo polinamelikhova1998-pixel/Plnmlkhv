@@ -745,3 +745,9 @@ body{background:#100b0f}
 .dz-team-roles{gap:0 28px!important}
 .dz-team-roles>div{border-top-color:rgba(211,142,170,.22)!important;padding:16px 0!important}
 @media(max-width:700px){.dz-about-content{padding-bottom:0!important}.dz-team-compact{margin-top:24px!important;padding:0 6% 36px!important}.dz-team-intro{margin-bottom:14px!important}.dz-team-roles{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0 14px!important}.dz-team-roles>div{font-size:11px!important;gap:6px!important;padding:14px 0!important}.dz-team-roles span{font-size:9px!important}}
+/* 12.5 — continuous About + Team layout */
+.dz-about-content{padding-bottom:0!important;margin-bottom:0!important}
+.dz-team-compact{margin-top:18px!important;padding-top:0!important;padding-bottom:38px!important}
+.dz-team-intro{margin-bottom:12px!important}
+.dz-team-roles>div{padding-top:12px!important;padding-bottom:12px!important}
+@media(max-width:700px){.dz-team-compact{margin-top:12px!important;padding-bottom:26px!important}.dz-team-intro{margin-bottom:10px!important}.dz-team-roles>div{padding:12px 0!important}}
