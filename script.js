@@ -29,3 +29,6 @@ document.querySelectorAll('.service[role="button"]').forEach(service=>{function 
 
 // 4.2: Scroll-synced journey light line; respects reduced-motion preferences.
 (()=>{const journey=document.querySelector('.journey');const bar=document.getElementById('journeyProgress');if(!journey||!bar)return;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce){bar.style.height='100%';return}let queued=false;function paint(){const rect=journey.getBoundingClientRect();const windowPoint=innerHeight*.67;const fraction=Math.max(0,Math.min(1,(windowPoint-rect.top)/Math.max(1,rect.height)));bar.style.height=(fraction*100)+'%';queued=false}addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(paint)}},{passive:true});addEventListener('resize',paint);paint()})();
+
+// 13.1: Contact dialog, keyboard and backdrop support.
+(()=>{const d=document.getElementById('contactDialog');const open=document.getElementById('openContact');const close=document.getElementById('closeContact');if(!d||!open||!close)return;open.addEventListener('click',()=>d.showModal());close.addEventListener('click',()=>d.close());d.addEventListener('click',e=>{if(e.target===d)d.close()})})();
