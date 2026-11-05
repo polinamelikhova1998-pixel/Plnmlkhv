@@ -970,3 +970,22 @@ section.finale .finale-center{z-index:4!important}
 .dz-carousel-stage .direction-card .direction-number{font-size:9px!important}
 .dz-carousel-stage .direction-card .direction-arrow{width:37px;height:37px;font-size:20px}
 }
+
+/* DERZKO 14.3: legible mobile carousel, no cropped headlines */
+.dz-carousel-stage .direction-card{overflow:hidden!important}
+.dz-carousel-stage .direction-content{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;text-align:left!important;transform:none!important}
+.dz-carousel-stage .direction-content strong{display:block!important;width:100%!important;max-width:100%!important;white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;hyphens:auto!important;letter-spacing:-.035em!important;line-height:1.06!important}
+.dz-carousel-stage .direction-content strong em{font:inherit!important;color:inherit!important}
+.dz-carousel-stage .direction-desc{display:block!important;max-width:100%!important;white-space:normal!important;overflow-wrap:break-word!important}
+@media(max-width:700px){
+.dz-carousel-stage{height:525px!important}
+.dz-carousel-stage .direction-card{width:82%!important;height:94%!important;top:2%!important;padding:21px 17px!important}
+.dz-carousel-stage .direction-card[data-offset="-1"]{transform:translate3d(-128%,0,-90px) rotateY(12deg) scale(.85)!important}
+.dz-carousel-stage .direction-card[data-offset="1"]{transform:translate3d(28%,0,-90px) rotateY(-12deg) scale(.85)!important}
+.dz-carousel-stage .direction-content{margin:auto 0 61px!important;padding:0!important}
+.dz-carousel-stage .direction-content strong{font-size:clamp(22px,5.65vw,29px)!important;line-height:1.08!important;letter-spacing:-.045em!important}
+.dz-carousel-stage .direction-desc{font-size:12px!important;line-height:1.48!important;margin-top:12px!important;padding-right:4px!important}
+.dz-carousel-stage .direction-number{font-size:9px!important;letter-spacing:.07em!important}
+.dz-carousel-stage .direction-arrow{right:15px!important;bottom:15px!important}
+}
+@media(max-width:370px){.dz-carousel-stage .direction-content strong{font-size:21px!important}.dz-carousel-stage .direction-card{padding:18px 15px!important}}
