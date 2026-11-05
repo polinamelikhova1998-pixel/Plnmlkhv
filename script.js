@@ -42,7 +42,7 @@ function show(){lastCard=cards[active];openDirection(active)}
 cards.forEach((card,i)=>card.addEventListener('click',e=>{if(swipeGuard){e.preventDefault();return}if(i!==active){active=i;paint()}else show()}));
 document.getElementById('dzCarouselPrev').addEventListener('click',()=>shift(-1));
 document.getElementById('dzCarouselNext').addEventListener('click',()=>shift(1));
-document.getElementById('dzCarouselOpen').addEventListener('click',show);
+
 let x0=null,y0=null,downAt=0;
 function begin(x,y){x0=x;y0=y;downAt=Date.now()}
 function end(x,y){if(x0===null)return;const dx=x-x0,dy=y-y0;x0=null;y0=null;if(Math.abs(dx)>28&&Math.abs(dx)>Math.abs(dy)*1.12){swipeGuard=true;shift(dx<0?1:-1);setTimeout(()=>swipeGuard=false,450)}}
