@@ -943,3 +943,30 @@ section.finale .finale-center{z-index:4!important}
 .dz-carousel-hint{font-size:9px}
 }
 @media(prefers-reduced-motion:reduce){.dz-carousel-stage .direction-card{transition:none!important}}
+
+/* 14.2: mobile-safe coverflow layout; no old grid/reveal transforms */
+.dz-carousel-stage{width:100%;max-width:100%;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.dz-carousel-stage .direction-card{box-sizing:border-box!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;border:1px solid #754559!important;border-radius:17px!important;overflow:hidden!important;background:#180b15!important;isolation:isolate!important;min-width:0!important;min-height:0!important;box-shadow:none!important;visibility:visible!important}
+.dz-carousel-stage .direction-card:before{content:""!important;position:absolute!important;inset:0!important;z-index:-2!important;background-repeat:no-repeat!important;background-size:cover!important;background-position:center!important;pointer-events:none!important}
+.dz-carousel-stage .direction-card:after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;background:linear-gradient(180deg,rgba(15,7,13,.18),rgba(15,7,13,.08) 32%,rgba(15,7,13,.8) 100%)!important;pointer-events:none!important}
+.dz-carousel-stage .direction-private:before{background-image:url('direction-private-clean.jpg')!important}
+.dz-carousel-stage .direction-corporate:before{background-image:url('direction-corporate-137.jpg')!important}
+.dz-carousel-stage .direction-forum:before{background-image:url('direction-forum-137.jpg')!important}
+.dz-carousel-stage .direction-festival:before{background-image:url('direction-festival-137.jpg')!important}
+.dz-carousel-stage .direction-card .direction-content{display:block!important;margin:auto 0 65px!important;position:relative;z-index:2}
+.dz-carousel-stage .direction-card .direction-number{position:relative;z-index:2}
+.dz-carousel-stage .direction-card .direction-arrow{position:absolute;right:20px;bottom:20px;z-index:2}
+@media(max-width:700px){
+.dz-carousel{width:100%;overflow:hidden}
+.dz-carousel-stage{height:490px!important;perspective:900px!important}
+.dz-carousel-stage .direction-card{width:76%!important;left:50%!important;top:4%!important;height:91%!important;padding:23px 18px!important}
+.dz-carousel-stage .direction-card[data-offset="0"]{transform:translate3d(-50%,0,0) scale(1)!important;z-index:5!important;opacity:1!important}
+.dz-carousel-stage .direction-card[data-offset="-1"]{transform:translate3d(-132%,0,-90px) rotateY(13deg) scale(.85)!important;z-index:3!important;opacity:.6!important}
+.dz-carousel-stage .direction-card[data-offset="1"]{transform:translate3d(32%,0,-90px) rotateY(-13deg) scale(.85)!important;z-index:3!important;opacity:.6!important}
+.dz-carousel-stage .direction-card[data-offset="2"]{transform:translate3d(130%,0,-180px) scale(.75)!important;z-index:1!important;opacity:0!important}
+.dz-carousel-stage .direction-card .direction-content strong{font-size:clamp(22px,5.8vw,32px)!important;line-height:1.07!important;overflow-wrap:anywhere!important}
+.dz-carousel-stage .direction-card .direction-content{margin:auto 0 55px!important}
+.dz-carousel-stage .direction-card .direction-desc{font-size:12px!important;line-height:1.5!important;margin-top:14px!important}
+.dz-carousel-stage .direction-card .direction-number{font-size:9px!important}
+.dz-carousel-stage .direction-card .direction-arrow{width:37px;height:37px;font-size:20px}
+}

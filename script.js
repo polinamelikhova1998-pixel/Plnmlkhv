@@ -31,25 +31,23 @@ document.querySelectorAll('.service[role="button"]').forEach(service=>{function 
 // 13.1: Contact dialog, keyboard and backdrop support.
 (()=>{const d=document.getElementById('contactDialog');const open=document.getElementById('openContact');const close=document.getElementById('closeContact');if(!d||!open||!close)return;open.addEventListener('click',()=>d.showModal());close.addEventListener('click',()=>d.close());d.addEventListener('click',e=>{if(e.target===d)d.close()})})();
 
-/* DERZKO 14.1 — four-direction carousel; swipe, arrows and keyboard */
+/* DERZKO 14.2 — reliable touch swipe, pointer swipe and navigation */
 (()=>{
-const stage=document.getElementById('dzCarouselStage');
-if(!stage)return;
-const cards=[...stage.querySelectorAll('[data-slide-project]')];
-const count=document.getElementById('dzCarouselCount');
-let active=0;
-function paint(){
-cards.forEach((card,i)=>{let d=(i-active+cards.length)%cards.length;if(d===cards.length-1)d=-1;card.dataset.offset=String(d);card.setAttribute('aria-label',(i===active?'Подробнее: ':'Показать: ')+card.querySelector('.direction-content strong').textContent.trim());card.setAttribute('aria-current',i===active?'true':'false')});
-count.innerHTML=String(active+1).padStart(2,'0')+' <span>/ 04</span>';
-}
-function shift(delta){active=(active+delta+cards.length)%cards.length;paint()}
-cards.forEach((card,i)=>card.addEventListener('click',()=>{if(stage.dataset.swiped)return;if(i!==active){active=i;paint()}else{lastCard=card;openDirection(i)}}));
+const stage=document.getElementById('dzCarouselStage');if(!stage)return;
+const cards=Array.from(stage.querySelectorAll('[data-slide-project]'));
+const count=document.getElementById('dzCarouselCount');let active=0,swipeGuard=false;
+function paint(){cards.forEach((card,i)=>{let d=(i-active+cards.length)%cards.length;if(d===cards.length-1)d=-1;card.dataset.offset=String(d);card.setAttribute('aria-current',i===active?'true':'false');card.setAttribute('tabindex',i===active?'0':'-1')});count.innerHTML=String(active+1).padStart(2,'0')+' <span>/ 04</span>'}
+function shift(n){active=(active+n+cards.length)%cards.length;paint()}
+function show(){lastCard=cards[active];openDirection(active)}
+cards.forEach((card,i)=>card.addEventListener('click',e=>{if(swipeGuard){e.preventDefault();return}if(i!==active){active=i;paint()}else show()}));
 document.getElementById('dzCarouselPrev').addEventListener('click',()=>shift(-1));
 document.getElementById('dzCarouselNext').addEventListener('click',()=>shift(1));
-document.getElementById('dzCarouselOpen').addEventListener('click',()=>{lastCard=cards[active];openDirection(active)});
-let startX=0,startY=0;
-stage.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY},{passive:true});
-stage.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.3){shift(dx<0?1:-1);stage.dataset.swiped='1';setTimeout(()=>{delete stage.dataset.swiped},350)}},{passive:true});
-stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();shift(1)}if(e.key==='ArrowLeft'){e.preventDefault();shift(-1)}});
+document.getElementById('dzCarouselOpen').addEventListener('click',show);
+let x0=null,y0=null,downAt=0;
+function begin(x,y){x0=x;y0=y;downAt=Date.now()}
+function end(x,y){if(x0===null)return;const dx=x-x0,dy=y-y0;x0=null;y0=null;if(Math.abs(dx)>28&&Math.abs(dx)>Math.abs(dy)*1.12){swipeGuard=true;shift(dx<0?1:-1);setTimeout(()=>swipeGuard=false,450)}}
+if(window.PointerEvent){stage.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.pointerType==='pen'||e.pointerType==='mouse')begin(e.clientX,e.clientY)},{passive:true});stage.addEventListener('pointerup',e=>end(e.clientX,e.clientY),{passive:true});stage.addEventListener('pointercancel',()=>{x0=null},{passive:true})}
+else{stage.addEventListener('touchstart',e=>begin(e.changedTouches[0].clientX,e.changedTouches[0].clientY),{passive:true});stage.addEventListener('touchend',e=>end(e.changedTouches[0].clientX,e.changedTouches[0].clientY),{passive:true})}
+stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();shift(1)}else if(e.key==='ArrowLeft'){e.preventDefault();shift(-1)}});
 paint();
 })();
