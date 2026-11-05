@@ -1,1 +1,1 @@
-DERZKO 13.6 — stage finale. Narrow diffused wine beams, low textured animated fog confined to bottom quarter, darker stage. Upload all files to GitHub Pages root. Existing sections retained.
+DERZKO 13.7 — направления: четыре согласованных визуала, обновлённые фотокарточки. Остальные секции, дым и хрустальная лента не менялись. Концептуальные изображения не являются фотографиями реализованных проектов.\n
