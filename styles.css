@@ -233,7 +233,7 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 }
 
 /* 5.0 preview: conceptual photo in festival tile, no other sections changed */
-.premiere-grid .project-card .poster-three.concept-photo{background:linear-gradient(180deg,rgba(12,5,13,.48) 0%,rgba(12,5,13,.08) 40%,rgba(12,5,13,.82) 100%),url("concept-festival.jpg") center center/cover no-repeat!important;}
+.premiere-grid .project-card .poster-three.concept-photo{background:linear-gradient(180deg,rgba(12,5,13,.48) 0%,rgba(12,5,13,.08) 40%,rgba(12,5,13,.82) 100%),url("direction-festival-137.jpg") center center/cover no-repeat!important;}
 .premiere-grid .project-card .concept-photo:before{display:none!important}
 .premiere-grid .project-card .concept-photo:after{background:linear-gradient(180deg,rgba(12,5,13,.22),transparent 42%,rgba(12,5,13,.42));}
 .premiere-grid .project-card .concept-photo .poster-main{text-shadow:0 2px 28px #100a14cc;font-size:clamp(33px,4.3vw,72px)}
@@ -296,14 +296,14 @@ a:hover .brand-arrow,button:hover .brand-arrow{transform:translate(3px,-3px);col
 }
 
 /* DERZKO 5.4: second original concept image */
-.premiere-grid .project-card .poster-two.concept-show{background:linear-gradient(180deg,rgba(12,5,13,.52) 0%,rgba(12,5,13,.06) 38%,rgba(12,5,13,.82) 100%),url("concept-show.jpg") center center/cover no-repeat!important;}
+.premiere-grid .project-card .poster-two.concept-show{background:linear-gradient(180deg,rgba(12,5,13,.52) 0%,rgba(12,5,13,.06) 38%,rgba(12,5,13,.82) 100%),url("direction-corporate-137.jpg") center center/cover no-repeat!important;}
 .premiere-grid .project-card .concept-show:before{display:none!important}
 .premiere-grid .project-card .concept-show:after{background:linear-gradient(180deg,rgba(12,5,13,.18),transparent 40%,rgba(12,5,13,.48));}
 
 /* DERZKO. 5.5 — two images inside the single Energy of the Crowd concept */
 .premiere-grid .project-card .poster-two.concept-show{background:none!important;}
 .premiere-grid .project-card .concept-photo{isolation:isolate;}
-.premiere-grid .project-card .concept-photo .concept-second-photo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,5,13,.48),rgba(12,5,13,.07) 40%,rgba(12,5,13,.82)),url("concept-show.jpg") center center/cover no-repeat;z-index:1;opacity:0;animation:derzkoPhotoSwap 12s ease-in-out infinite;pointer-events:none;}
+.premiere-grid .project-card .concept-photo .concept-second-photo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,5,13,.48),rgba(12,5,13,.07) 40%,rgba(12,5,13,.82)),url("direction-corporate-137.jpg") center center/cover no-repeat;z-index:1;opacity:0;animation:derzkoPhotoSwap 12s ease-in-out infinite;pointer-events:none;}
 @keyframes derzkoPhotoSwap{0%,42%{opacity:0}50%,91%{opacity:1}100%{opacity:0}}
 .premiere-grid .project-card .concept-photo .concept-photo-count{position:absolute;right:18px;top:18px;z-index:2;color:#fff;font:600 10px/1.4 Arial,sans-serif;letter-spacing:.13em;text-shadow:0 2px 9px #000;pointer-events:none;}
 @media(prefers-reduced-motion:reduce){.premiere-grid .project-card .concept-photo .concept-second-photo{animation:none;opacity:0}}
@@ -432,9 +432,9 @@ body{background:#100b0f}
 .hero-giant-word{top:24%!important;left:4%!important;width:93vw!important;max-width:1180px!important;height:auto!important;font-size:0!important;letter-spacing:0!important;transform:rotate(-4deg)!important;filter:drop-shadow(0 0 12px rgba(150,44,82,.18));-webkit-text-stroke:0!important;animation:none!important;pointer-events:none}
 .hero-giant-word svg{width:100%;height:auto;display:block;overflow:visible;opacity:.78}
 .premiere-grid .project-card .poster-one.cinematic-forum,.premiere-grid .project-card .poster-two.cinematic-gala,.premiere-grid .project-card .poster-four.cinematic-special{background-color:#1b0a15!important;background-repeat:no-repeat!important;background-size:cover!important;background-position:center!important}
-.premiere-grid .project-card .poster-one.cinematic-forum{background-image:linear-gradient(90deg,rgba(15,7,15,.88) 0%,rgba(20,8,18,.48) 58%,rgba(12,5,13,.12) 100%),url("concept-forum.jpg")!important}
-.premiere-grid .project-card .poster-two.cinematic-gala{background-image:linear-gradient(90deg,rgba(15,7,15,.86) 0%,rgba(20,8,18,.46) 58%,rgba(12,5,13,.12) 100%),url("concept-gala.jpg")!important}
-.premiere-grid .project-card .poster-four.cinematic-special{background-image:linear-gradient(90deg,rgba(15,7,15,.86) 0%,rgba(20,8,18,.46) 58%,rgba(12,5,13,.12) 100%),url("concept-special.jpg")!important}
+.premiere-grid .project-card .poster-one.cinematic-forum{background-image:linear-gradient(90deg,rgba(15,7,15,.88) 0%,rgba(20,8,18,.48) 58%,rgba(12,5,13,.12) 100%),url("direction-forum-137.jpg")!important}
+.premiere-grid .project-card .poster-two.cinematic-gala{background-image:linear-gradient(90deg,rgba(15,7,15,.86) 0%,rgba(20,8,18,.46) 58%,rgba(12,5,13,.12) 100%),url("direction-private-clean.jpg")!important}
+.premiere-grid .project-card .poster-four.cinematic-special{background-image:linear-gradient(90deg,rgba(15,7,15,.86) 0%,rgba(20,8,18,.46) 58%,rgba(12,5,13,.12) 100%),url("direction-corporate-137.jpg")!important}
 .premiere-grid .project-card .cinematic-forum:before,.premiere-grid .project-card .cinematic-gala:before,.premiere-grid .project-card .cinematic-special:before{display:none!important}
 .premiere-grid .project-card .cinematic-forum .poster-main,.premiere-grid .project-card .cinematic-gala .poster-main,.premiere-grid .project-card .cinematic-special .poster-main{text-shadow:0 2px 22px rgba(0,0,0,.7)}
 @media(max-width:700px){.hero-giant-word{left:3%!important;top:27%!important;width:97vw!important;transform:rotate(-4deg)!important}.hero-giant-word svg{opacity:.72}.premiere-grid .project-card .cinematic-forum,.premiere-grid .project-card .cinematic-gala,.premiere-grid .project-card .cinematic-special{background-position:55% center!important}}
@@ -443,39 +443,39 @@ body{background:#100b0f}
 .premiere-grid{display:grid!important;grid-template-columns:1fr!important;gap:clamp(14px,2vw,22px)!important}
 .premiere-grid .project-card{width:100%!important;grid-column:1/-1!important;min-width:0!important}
 .premiere-grid .project-card .poster{min-height:clamp(320px,33vw,440px)!important;aspect-ratio:2.85/1!important;border:1px solid rgba(222,137,170,.7)!important;border-radius:18px!important;overflow:hidden!important;background-color:#190711!important}
-.premiere-grid .project-card .cinematic-forum{background-image:linear-gradient(90deg,#210713 0%,rgba(36,7,20,.94) 24%,rgba(35,8,22,.66) 49%,rgba(14,5,13,.08) 100%),url('approved-forum.jpg')!important;background-position:center,right center!important;background-size:cover,64% 100%!important}
-.premiere-grid .project-card .cinematic-gala{background-image:linear-gradient(90deg,#210713 0%,rgba(36,7,20,.94) 24%,rgba(35,8,22,.64) 49%,rgba(14,5,13,.08) 100%),url('approved-gala.jpg')!important;background-position:center,right center!important;background-size:cover,64% 100%!important}
-.premiere-grid .project-card .cinematic-special{background-image:linear-gradient(90deg,#210713 0%,rgba(36,7,20,.94) 24%,rgba(35,8,22,.64) 49%,rgba(14,5,13,.08) 100%),url('approved-exhibition.jpg')!important;background-position:center,right center!important;background-size:cover,64% 100%!important}
+.premiere-grid .project-card .cinematic-forum{background-image:linear-gradient(90deg,#210713 0%,rgba(36,7,20,.94) 24%,rgba(35,8,22,.66) 49%,rgba(14,5,13,.08) 100%),url('direction-forum-137.jpg')!important;background-position:center,right center!important;background-size:cover,64% 100%!important}
+.premiere-grid .project-card .cinematic-gala{background-image:linear-gradient(90deg,#210713 0%,rgba(36,7,20,.94) 24%,rgba(35,8,22,.64) 49%,rgba(14,5,13,.08) 100%),url('direction-private-clean.jpg')!important;background-position:center,right center!important;background-size:cover,64% 100%!important}
+.premiere-grid .project-card .cinematic-special{background-image:linear-gradient(90deg,#210713 0%,rgba(36,7,20,.94) 24%,rgba(35,8,22,.64) 49%,rgba(14,5,13,.08) 100%),url('direction-forum-137.jpg')!important;background-position:center,right center!important;background-size:cover,64% 100%!important}
 .premiere-grid .project-card .poster-main{font-size:clamp(40px,6.5vw,90px)!important;line-height:.99!important;max-width:60%;letter-spacing:-.055em}
 .premiere-grid .project-card .poster-foot{max-width:100%;}
 .premiere-grid .project-card .poster-top{font-size:clamp(10px,1.15vw,15px)!important}
 .premiere-grid .project-card .poster-foot .poster-link-icon{border-radius:50%}
 @media(max-width:700px){
 .premiere-grid .project-card .poster{aspect-ratio:auto!important;min-height:clamp(335px,105vw,570px)!important;border-radius:10px!important}
-.premiere-grid .project-card .cinematic-forum{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('approved-forum.jpg')!important;background-size:cover,auto 100%!important;background-position:center,65% center!important}
-.premiere-grid .project-card .cinematic-gala{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('approved-gala.jpg')!important;background-size:cover,auto 100%!important;background-position:center,60% center!important}
-.premiere-grid .project-card .cinematic-special{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('approved-exhibition.jpg')!important;background-size:cover,auto 100%!important;background-position:center,62% center!important}
+.premiere-grid .project-card .cinematic-forum{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('direction-forum-137.jpg')!important;background-size:cover,auto 100%!important;background-position:center,65% center!important}
+.premiere-grid .project-card .cinematic-gala{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('direction-private-clean.jpg')!important;background-size:cover,auto 100%!important;background-position:center,60% center!important}
+.premiere-grid .project-card .cinematic-special{background-image:linear-gradient(180deg,rgba(31,8,20,.32),rgba(31,8,20,.13) 43%,rgba(17,5,13,.84)),url('direction-forum-137.jpg')!important;background-size:cover,auto 100%!important;background-position:center,62% center!important}
 .premiere-grid .project-card .poster-main{font-size:clamp(39px,9vw,68px)!important;max-width:100%}
 }
 
 /* 7.3 FIX: these exact selectors override legacy poster-one/two/four photo rules.
    Previously the old, more-specific selectors won despite the 7.2 updates. */
 .premiere-grid .project-card .poster-one.cinematic-forum {
- background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('approved-forum.jpg')!important;
+ background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('direction-forum-137.jpg')!important;
  background-size:cover!important;background-position:center center!important;
 }
 .premiere-grid .project-card .poster-two.cinematic-gala {
- background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('approved-gala.jpg')!important;
+ background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('direction-private-clean.jpg')!important;
  background-size:cover!important;background-position:center center!important;
 }
 .premiere-grid .project-card .poster-four.cinematic-special {
- background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('approved-exhibition.jpg')!important;
+ background-image:linear-gradient(90deg,rgba(25,5,15,.91) 0%,rgba(25,5,15,.72) 32%,rgba(25,5,15,.08) 72%),url('direction-forum-137.jpg')!important;
  background-size:cover!important;background-position:center center!important;
 }
 @media(max-width:700px){
- .premiere-grid .project-card .poster-one.cinematic-forum {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('approved-forum.jpg')!important;background-size:cover!important;background-position:58% center!important}
- .premiere-grid .project-card .poster-two.cinematic-gala {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('approved-gala.jpg')!important;background-size:cover!important;background-position:59% center!important}
- .premiere-grid .project-card .poster-four.cinematic-special {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('approved-exhibition.jpg')!important;background-size:cover!important;background-position:61% center!important}
+ .premiere-grid .project-card .poster-one.cinematic-forum {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('direction-forum-137.jpg')!important;background-size:cover!important;background-position:58% center!important}
+ .premiere-grid .project-card .poster-two.cinematic-gala {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('direction-private-clean.jpg')!important;background-size:cover!important;background-position:59% center!important}
+ .premiere-grid .project-card .poster-four.cinematic-special {background-image:linear-gradient(180deg,rgba(24,6,17,.24),rgba(24,6,17,.12) 48%,rgba(12,4,12,.75)),url('direction-forum-137.jpg')!important;background-size:cover!important;background-position:61% center!important}
 }
 
 /* DERZKO 8.0: four honest event directions, no client photos */
@@ -490,10 +490,10 @@ body{background:#100b0f}
 .directions-grid .direction-card:before{inset:0;background-size:cover;background-position:center;filter:saturate(.85) brightness(.82);transition:transform .65s ease;}
 .directions-grid .direction-card:hover:before{transform:scale(1.04)}
 .directions-grid .direction-card:after{background:linear-gradient(90deg,rgba(18,6,15,.92) 0%,rgba(25,8,19,.74) 47%,rgba(25,8,19,.13) 100%),linear-gradient(0deg,rgba(17,6,13,.83) 0%,transparent 43%,rgba(16,6,13,.35) 100%)}
-.direction-private:before{background-image:url('approved-gala.jpg')!important}
-.direction-corporate:before{background-image:url('concept-show.jpg')!important}
-.direction-forum:before{background-image:url('concept-forum.jpg')!important}
-.direction-festival:before{background-image:url('concept-festival.jpg')!important}
+.direction-private:before{background-image:url('direction-private-clean.jpg')!important}
+.direction-corporate:before{background-image:url('direction-corporate-137.jpg')!important}
+.direction-forum:before{background-image:url('direction-forum-137.jpg')!important}
+.direction-festival:before{background-image:url('direction-festival-137.jpg')!important}
 .direction-number,.direction-content,.direction-arrow{position:relative;z-index:2}
 .direction-content{margin:auto 0 52px;max-width:92%}
 .direction-content strong{font-size:clamp(23px,2.15vw,37px);overflow-wrap:normal;word-break:normal;hyphens:auto;text-wrap:balance}
@@ -505,7 +505,7 @@ body{background:#100b0f}
 
 /* DERZKO 8.2 — clean photo crops, stronger corporate gala, one arrow, readable copy */
 .directions-grid .direction-private:before{background-image:url("direction-private-clean.jpg")!important;background-position:54% center}
-.directions-grid .direction-corporate:before{background-image:url("direction-corporate-clean.jpg")!important;background-position:58% center}
+.directions-grid .direction-corporate:before{background-image:url("direction-corporate-137.jpg")!important;background-position:58% center}
 .directions-grid .direction-arrow{position:absolute!important;right:18px!important;bottom:18px!important;z-index:5!important;flex:none!important;overflow:hidden!important}
 .directions-grid .direction-arrow::before{content:none!important}
 .directions-grid .direction-arrow::after{content:""!important;position:static!important;inset:auto!important;width:19px!important;height:19px!important;border:0!important;border-radius:0!important;background-color:#fff!important;transform:none!important;box-shadow:none!important}
@@ -513,7 +513,7 @@ body{background:#100b0f}
 
 /* DERZKO 8.3 — distinct corporate event visual and cleaner mobile cards */
 .directions-grid .direction-corporate:before{
- background-image:url('direction-corporate-event.jpg')!important;
+ background-image:url('direction-corporate-137.jpg')!important;
  background-position:center center!important;
  background-repeat:no-repeat!important;
  background-size:cover!important;
@@ -590,7 +590,7 @@ body{background:#100b0f}
 /* DERZKO 9.0 — realistic smoked-glass ribbon */
 .dz-smoked-stage{background:radial-gradient(ellipse at 50% 55%,#32121f 0%,#160c13 72%);height:clamp(250px,31vw,420px);overflow:hidden}
 .dz-smoked-stage::before{display:none}
-.dz-smoked-ribbon{position:absolute;inset:-9% -5%;background-image:url("smoked-glass-ribbon.webp");background-repeat:no-repeat;background-position:center;background-size:100% 100%;filter:contrast(1.08) saturate(.85);animation:dzSmokedDrift 13s ease-in-out infinite alternate;will-change:transform}
+.dz-smoked-ribbon{position:absolute;inset:-9% -5%;background-image:url("smoked-glass-hd.png");background-repeat:no-repeat;background-position:center;background-size:100% 100%;filter:contrast(1.08) saturate(.85);animation:dzSmokedDrift 13s ease-in-out infinite alternate;will-change:transform}
 @keyframes dzSmokedDrift{from{transform:translate3d(-1.3%,5px,0) scale(1.025)}to{transform:translate3d(1.3%,-6px,0) scale(1.055)}}
 @media(max-width:700px){.dz-smoked-stage{height:245px;margin-top:12px}.dz-smoked-ribbon{inset:-3% -7%;background-size:100% 100%}}
 @media(prefers-reduced-motion:reduce){.dz-smoked-ribbon{animation:none;will-change:auto}}
@@ -765,8 +765,8 @@ body{background:#100b0f}
 }
 
 /* 12.7 — expanded directions, matching the existing visual system */
-.directions-grid .direction-show{background-image:linear-gradient(0deg,rgba(19,5,15,.88),rgba(19,5,15,.12)),url('concept-show.jpg');background-size:cover;background-position:center}
-.directions-grid .direction-creative{background-image:linear-gradient(0deg,rgba(19,5,15,.90),rgba(19,5,15,.18)),url('concept-special.jpg');background-size:cover;background-position:center}
+.directions-grid .direction-show{background-image:linear-gradient(0deg,rgba(19,5,15,.88),rgba(19,5,15,.12)),url('direction-corporate-137.jpg');background-size:cover;background-position:center}
+.directions-grid .direction-creative{background-image:linear-gradient(0deg,rgba(19,5,15,.90),rgba(19,5,15,.18)),url('direction-corporate-137.jpg');background-size:cover;background-position:center}
 .directions-grid .direction-card{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease,filter .45s ease}
 @media(hover:hover){.directions-grid .direction-card:hover{transform:translateY(-5px);box-shadow:0 18px 55px #05020570}}
 @media(prefers-reduced-motion:reduce){.directions-grid .direction-card{transition:none}}
@@ -907,3 +907,39 @@ section.finale .finale-center{z-index:4!important}
 .direction-modal .dm-end>span{font-size:clamp(13px,2vw,20px);letter-spacing:.08em}
 @media(max-width:650px){.direction-modal .dm-hero{min-height:400px!important}.direction-modal .dm-hero-content{padding:75px 23px 62px!important}.direction-modal .dm-hero h2{font-size:clamp(40px,10.4vw,57px)!important;line-height:1.04!important;overflow-wrap:normal;word-break:normal}.direction-modal .dm-kicker{margin-top:34px!important}.direction-modal .dm-hero-orbit{width:125vw;right:-72vw;top:5%;opacity:.3}.direction-modal .dm-intro{padding-top:34px}}
 @media(prefers-reduced-motion:no-preference){.direction-modal[open] .dm-hero-content{animation:dmTypeIn .6s both}.direction-modal[open] .dm-hero-orbit{animation:dmOrbitIn 1.1s both}@keyframes dmTypeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes dmOrbitIn{from{opacity:0;transform:rotate(-30deg) scale(.92)}to{opacity:.4;transform:rotate(-21deg) scale(1)}}}
+
+/* DERZKO 14.1 — immersive, touch-enabled directions coverflow */
+.dz-carousel{position:relative;width:100%;max-width:1320px;margin:0 auto}
+.dz-carousel-stage{position:relative;height:clamp(460px,49vw,610px);perspective:1400px;overflow:hidden;isolation:isolate;touch-action:pan-y}
+.dz-carousel-stage .direction-card{display:flex!important;position:absolute!important;left:50%!important;top:4%!important;width:min(52%,610px)!important;height:91%!important;min-height:0!important;max-width:none!important;margin:0!important;transform-origin:center center!important;transition:transform .75s cubic-bezier(.2,.7,.2,1),opacity .6s ease,filter .6s ease!important;will-change:transform,opacity;backface-visibility:hidden;cursor:pointer}
+.dz-carousel-stage .direction-card[data-offset="0"]{transform:translateX(-50%) translateZ(90px) scale(1)!important;opacity:1;filter:none;z-index:4;pointer-events:auto}
+.dz-carousel-stage .direction-card[data-offset="-1"]{transform:translateX(-121%) translateZ(-120px) rotateY(22deg) scale(.83)!important;opacity:.72;filter:brightness(.68);z-index:3;pointer-events:auto}
+.dz-carousel-stage .direction-card[data-offset="1"]{transform:translateX(21%) translateZ(-120px) rotateY(-22deg) scale(.83)!important;opacity:.72;filter:brightness(.68);z-index:3;pointer-events:auto}
+.dz-carousel-stage .direction-card[data-offset="2"]{transform:translateX(95%) translateZ(-280px) rotateY(-30deg) scale(.67)!important;opacity:0;filter:brightness(.45);z-index:1;pointer-events:none}
+.dz-carousel-stage .direction-card:not([data-offset="0"]) .direction-content,.dz-carousel-stage .direction-card:not([data-offset="0"]) .direction-number,.dz-carousel-stage .direction-card:not([data-offset="0"]) .direction-arrow{opacity:0!important;transition:opacity .25s ease!important}
+.dz-carousel-stage .direction-card[data-offset="0"] .direction-content,.dz-carousel-stage .direction-card[data-offset="0"] .direction-number,.dz-carousel-stage .direction-card[data-offset="0"] .direction-arrow{opacity:1!important;transition:opacity .45s ease .18s!important}
+.dz-carousel-stage .direction-card:before{transform:none!important}
+.dz-carousel-stage .direction-card .direction-content strong{font-size:clamp(26px,3vw,45px)!important}
+.dz-carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin:12px auto 0}
+.dz-carousel-nav{width:48px;height:48px;border:1px solid #8c6175;border-radius:50%;color:#f9edf3;background:#24111e;font-size:23px;cursor:pointer}
+.dz-carousel-nav:hover{background:#54233e}
+.dz-carousel-count{min-width:74px;text-align:center;color:#fff;font-size:15px;font-weight:700;letter-spacing:.13em}.dz-carousel-count span{color:#b58d9f;font-weight:400}
+.dz-carousel-open{border:1px solid #9e607b;border-radius:30px;padding:15px 22px;background:#481c35;color:#fff;font-size:11px;letter-spacing:.12em;font-weight:700;cursor:pointer}.dz-carousel-open span{margin-left:14px;font-size:18px}
+.dz-carousel-open:hover{background:#692744}
+.dz-carousel-hint{text-align:center;color:#a88a99;font-size:10px;letter-spacing:.16em;margin:17px 0 0}
+@media(max-width:700px){
+.dz-carousel-stage{height:510px;overflow:hidden}
+.dz-carousel-stage .direction-card{top:3%!important;width:78%!important;height:92%!important;padding:22px!important}
+.dz-carousel-stage .direction-card[data-offset="0"]{transform:translateX(-50%) scale(1)!important}
+.dz-carousel-stage .direction-card[data-offset="-1"]{transform:translateX(-113%) rotateY(19deg) scale(.84)!important;opacity:.7}
+.dz-carousel-stage .direction-card[data-offset="1"]{transform:translateX(13%) rotateY(-19deg) scale(.84)!important;opacity:.7}
+.dz-carousel-stage .direction-card[data-offset="2"]{transform:translateX(110%) scale(.7)!important;opacity:0}
+.dz-carousel-stage .direction-card .direction-content strong{font-size:clamp(25px,6.3vw,35px)!important}
+.dz-carousel-stage .direction-card .direction-desc{font-size:12px!important;max-width:100%!important}
+.dz-carousel-controls{gap:10px;flex-wrap:wrap}
+.dz-carousel-nav{width:43px;height:43px}
+.dz-carousel-open{padding:13px 12px;font-size:10px;letter-spacing:.04em}
+.dz-carousel-open span{margin-left:5px}
+.dz-carousel-hint{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.dz-carousel-stage .direction-card{transition:none!important}}
