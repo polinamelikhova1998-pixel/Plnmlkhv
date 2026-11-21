@@ -1057,3 +1057,56 @@ section.finale .finale-center{z-index:4!important}
 .exp-lab{grid-template-columns:1fr;gap:0;padding-top:85px}.exp-lab h3{font-size:clamp(45px,11vw,76px)}.exp-lab-visual{min-height:330px}
 }
 @media(prefers-reduced-motion:reduce){.exp-lab-orbit{animation:none}.exp-photo{transition:none}}
+
+
+/* DERZKO 18 — THE EDIT / compact editorial mobile-first portfolio */
+.edit18{position:relative;background:#0d0a0d;color:#f6eef0;padding:88px 0 0;overflow:hidden}
+.edit18 *{box-sizing:border-box}
+.edit18-shell{width:min(1200px,100%);margin:auto;padding:0 clamp(22px,5vw,64px)}
+.edit18-top{display:flex;align-items:center;gap:24px;font:500 10px/1.5 Arial,sans-serif;letter-spacing:.3em;color:#d8b3c3}
+.edit18-top span:first-child{color:#a34d70}.edit18-rule{height:1px;background:#67515b;flex:1}
+.edit18-stage{position:relative;height:clamp(530px,65vw,700px);isolation:isolate;margin-top:26px}
+.edit18-orb{position:absolute;width:clamp(210px,36vw,430px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#68203a,#3d1327 60%,#220d18);right:10%;top:7%;opacity:.8;filter:blur(.2px);z-index:-1}
+.edit18-copy{position:absolute;top:16%;left:2%;z-index:3;pointer-events:none}
+.edit18-eyebrow{display:block;font:600 10px/1.4 Arial,sans-serif;letter-spacing:.18em;color:#c9a6b6;margin-bottom:24px}
+.edit18-copy h2{font-family:Georgia,serif;font-size:clamp(64px,9.8vw,132px);font-weight:400;line-height:.79;letter-spacing:-.085em;color:#fffaf8;margin:0;text-shadow:0 2px 24px #100a1090}
+.edit18-copy h2 i{font-weight:400}.edit18-period{color:#a94a6b}
+.edit18-copy p{font:400 clamp(13px,1.4vw,17px)/1.55 Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;margin:32px 0 34px;color:#eee1e6}
+.edit18-open{pointer-events:auto;display:flex;align-items:center;gap:28px;border:0;border-bottom:1px solid #9e4c6b;background:none;color:#f6eaf0;padding:0 0 11px;font:600 11px Arial,sans-serif;letter-spacing:.14em;cursor:pointer}
+.edit18-arrow{font-size:23px;font-weight:300;line-height:1}
+.edit18-photo-wrap{position:absolute;top:7%;left:42%;width:48%;height:75%;z-index:1}
+.edit18-photo{position:absolute;background-size:cover;background-position:center;transition:opacity .25s ease,transform .55s cubic-bezier(.2,.7,.2,1);box-shadow:0 20px 65px #0009}
+.edit18-photo-a{background-image:url('moment-atmosphere.jpg');width:100%;height:91%;top:0;right:0}
+.edit18-photo-b{background-image:url('moment-light.jpg');width:46%;height:43%;bottom:-4%;left:-24%;border:1px solid #997784}
+.edit18-stage:not(.edit18-changing) .edit18-photo-a{transform:translateY(0)}
+.edit18-stage:not(.edit18-changing) .edit18-photo-b{transform:translateY(0)}
+.edit18-stage.edit18-changing .edit18-photo{opacity:.18;transform:translateY(12px)}
+.edit18-nav{position:absolute;right:0;top:26%;z-index:4;display:flex;flex-direction:column;gap:19px;border-left:1px solid #76616b;padding-left:19px}
+.edit18-nav button{font:500 12px Arial,sans-serif;letter-spacing:.15em;background:none;border:0;color:#b7a6ae;cursor:pointer;padding:3px;transition:color .25s}
+.edit18-nav button.is-current{color:#da759d}
+.edit18-note{position:absolute;bottom:4%;right:0;display:flex;gap:28px;justify-content:space-between;width:58%;font:500 10px Arial,sans-serif;letter-spacing:.2em;color:#c7a5b6}
+.edit18-foot{border-top:1px solid #4d343f;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 0 45px;font:500 10px/1.5 Arial,sans-serif;letter-spacing:.15em;color:#c9aab9}
+.edit18-foot a{color:#fff;text-decoration:none;white-space:nowrap}.edit18-foot a span{color:#d67e9f;margin-left:12px}
+.edit18-lab{border-top:1px solid #543743;min-height:265px;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:48px 0 58px;position:relative}
+.edit18-lab>div:first-child{z-index:1}.edit18-lab span{font:600 10px Arial,sans-serif;letter-spacing:.18em;color:#b9869d}
+.edit18-lab h3{font:400 clamp(36px,5vw,66px)/1.1 Georgia,serif;letter-spacing:-.04em;margin:17px 0;color:#f6edf0}.edit18-lab h3 i{font-weight:400;color:#d493b0}
+.edit18-lab p{font:400 14px/1.5 Arial,sans-serif;color:#d3bdc7;margin:0 0 14px}.edit18-lab small{font:400 9px Arial,sans-serif;letter-spacing:.12em;color:#a98798}
+.edit18-lab-shape{height:175px;width:40%;border-radius:55% 25% 55% 25%;transform:rotate(-22deg);background:radial-gradient(ellipse at 40% 30%,#b45a7e 0%,#54152f 35%,#250d1b 75%);box-shadow:inset -20px -22px 30px #0e0710,0 0 55px #77274d35;flex-shrink:0}
+@media(max-width:700px){
+.edit18{padding-top:58px}.edit18-top{gap:14px;font-size:9px}
+.edit18-stage{height:600px;margin-top:18px}
+.edit18-orb{right:2%;top:7%;width:245px}
+.edit18-copy{left:0;top:18%;width:60%}.edit18-eyebrow{font-size:8px;letter-spacing:.1em;margin-bottom:20px}
+.edit18-copy h2{font-size:clamp(65px,16vw,94px);line-height:.82}
+.edit18-copy p{font-size:11px;letter-spacing:.18em;margin:28px 0 27px}
+.edit18-open{font-size:9px;letter-spacing:.07em;gap:10px}.edit18-arrow{font-size:20px}
+.edit18-photo-wrap{top:9%;left:38%;width:57%;height:74%}
+.edit18-photo-a{height:86%;background-position:center}.edit18-photo-b{width:59%;height:34%;left:-31%;bottom:1%}
+.edit18-nav{top:35%;right:-4px;gap:15px;padding-left:10px}.edit18-nav button{font-size:10px}
+.edit18-note{bottom:3%;width:100%;font-size:9px}.edit18-note span:last-child{display:none}
+.edit18-foot{padding:18px 0 32px;flex-direction:column;align-items:start;gap:17px;font-size:9px}
+.edit18-lab{min-height:215px;padding:36px 0}.edit18-lab h3{font-size:37px}.edit18-lab p{font-size:12px;max-width:235px}.edit18-lab small{font-size:8px;line-height:1.5;display:block;max-width:230px}
+.edit18-lab-shape{position:absolute;right:-80px;top:65px;width:190px;height:120px;opacity:.8}
+}
+@media(max-width:390px){.edit18-stage{height:555px}.edit18-copy h2{font-size:61px}.edit18-photo-wrap{left:41%;width:54%}.edit18-copy{top:19%}}
+@media(prefers-reduced-motion:reduce){.edit18-photo{transition:none}}

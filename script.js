@@ -54,46 +54,36 @@ paint();
 
 
 
-// DERZKO 17 — scroll-controlled cinematic experience
+
+// DERZKO 18 / editorial interactive portfolio
 (() => {
-  const scene = document.getElementById('exp-show');
-  if (!scene) return;
-  const photos = [...scene.querySelectorAll('.exp-photo')];
-  const bars = [...scene.querySelectorAll('.exp-bars i')];
-  const word = document.getElementById('expWord');
-  const act = document.getElementById('expAct');
-  const sub = document.getElementById('expSub');
-  const index = document.getElementById('expIndex');
-  const stories = [
-    ['АТМОСФЕРА', '01 / ПРОСТРАНСТВО', 'Сначала ты видишь. Потом — чувствуешь.'],
-    ['СВЕТ', '02 / ПРЕВРАЩЕНИЕ', 'Один момент меняет всё вокруг.'],
-    ['ЭМОЦИИ', '03 / ПОСЛЕ ФИНАЛА', 'То, что остаётся, когда гаснет свет.']
-  ];
-  let previous = -1, pending = false;
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function update() {
-    pending = false;
-    const rect = scene.getBoundingClientRect();
-    const length = Math.max(1, scene.offsetHeight - innerHeight);
-    const progress = Math.max(0, Math.min(.99999, -rect.top / length));
-    const active = Math.min(2, Math.floor(progress * 3));
-    const local = (progress * 3) % 1;
-    photos.forEach((photo, i) => {
-      photo.classList.toggle('is-active', i === active);
-      photo.style.transform = reduced ? 'scale(1)' : `scale(${i === active ? 1.035 + local * .085 : 1.14})`;
-    });
-    bars.forEach((bar, i) => { bar.style.opacity = i === active ? '1' : '.28'; });
-    if (active !== previous) {
-      previous = active;
-      const [heading, label, description] = stories[active];
-      word.innerHTML = heading + '<span>.</span>';
-      act.textContent = label;
-      sub.textContent = description;
-      index.textContent = String(active + 1).padStart(2, '0') + ' / 03';
-    }
-  }
-  function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
-  addEventListener('scroll', schedule, {passive:true});
-  addEventListener('resize', schedule, {passive:true});
-  update();
+ const stage=document.getElementById('edit18-stage'); if(!stage)return;
+ const main=document.getElementById('edit18-main'), small=document.getElementById('edit18-small'), caption=document.getElementById('edit18-caption');
+ const buttons=[...stage.querySelectorAll('[data-edit18]')];
+ const frames=[
+  ['moment-atmosphere.jpg','moment-light.jpg','01 / АТМОСФЕРА','Атмосфера события'],
+  ['moment-light.jpg','moment-emotion.jpg','02 / СВЕТ','Свет и сценография'],
+  ['moment-emotion.jpg','moment-atmosphere.jpg','03 / ЭМОЦИИ','Эмоции события']
+ ];
+ let active=0, busy=false;
+ // Preload images to avoid blank frames on slower mobile connections.
+ frames.forEach(f=>f.slice(0,2).forEach(src=>{const i=new Image();i.src=src}));
+ function choose(next){
+  next=(next+frames.length)%frames.length;
+  if(next===active||busy)return;
+  busy=true;stage.classList.add('edit18-changing');
+  setTimeout(()=>{
+    active=next;const f=frames[active];
+    main.style.backgroundImage=`url("${f[0]}")`;
+    small.style.backgroundImage=`url("${f[1]}")`;
+    main.setAttribute('aria-label',f[3]);caption.textContent=f[2];
+    buttons.forEach((b,i)=>{b.classList.toggle('is-current',i===active);b.setAttribute('aria-pressed',String(i===active))});
+    stage.classList.remove('edit18-changing');busy=false;
+  },230);
+ }
+ buttons.forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
+ document.getElementById('edit18-next').addEventListener('click',()=>choose(active+1));
+ let startX=null;
+ stage.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});
+ stage.addEventListener('touchend',e=>{if(startX===null)return;const delta=e.changedTouches[0].clientX-startX;startX=null;if(Math.abs(delta)>55)choose(active+(delta<0?1:-1))},{passive:true});
 })();
