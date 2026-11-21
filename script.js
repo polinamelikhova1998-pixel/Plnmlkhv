@@ -53,5 +53,47 @@ paint();
 })();
 
 
-/* DERZKO 15: selected moments portfolio */
-(()=>{const root=document.getElementById('dzpExperience');const dialog=document.getElementById('dzpDialog');if(!root||!dialog)return;const cards=[...root.querySelectorAll('[data-moment]')];const count=document.getElementById('dzpCount');const titles=['АТМОСФЕРА','СВЕТ','ЭМОЦИИ'];const texts=['Тишина перед первым аккордом. Пространство, в котором каждая деталь создаёт настроение.','Один луч — и привычное пространство превращается в сцену. Свет становится частью истории.','Всё, что мы создаём, существует ради этого мгновения. Настоящих чувств, которые невозможно поставить по сценарию.'];let active=0;function paint(){cards.forEach((c,i)=>c.classList.toggle('is-current',i===active));count.textContent=String(active+1).padStart(2,'0')+' / 03'}function shift(n){active=(active+n+cards.length)%cards.length;paint()}function show(i){active=i;paint();document.getElementById('dzpDialogImage').src=cards[i].querySelector('img').src;document.getElementById('dzpDialogImage').alt=cards[i].querySelector('img').alt;document.getElementById('dzpDialogTitle').textContent=titles[i];document.getElementById('dzpDialogText').textContent=texts[i];document.getElementById('dzpDialogNum').textContent=String(i+1).padStart(2,'0')+' / SELECTED MOMENT';if(!dialog.open)dialog.showModal()}cards.forEach((c,i)=>c.addEventListener('click',()=>i===active?show(i):(active=i,paint())));document.getElementById('dzpPrev').addEventListener('click',()=>shift(-1));document.getElementById('dzpNext').addEventListener('click',()=>shift(1));document.getElementById('dzpClose').addEventListener('click',()=>dialog.close());document.getElementById('dzpDialogNext').addEventListener('click',()=>show((active+1)%cards.length));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});let x=null,y=null;root.addEventListener('touchstart',e=>{x=e.changedTouches[0].clientX;y=e.changedTouches[0].clientY},{passive:true});root.addEventListener('touchend',e=>{if(x===null)return;const dx=e.changedTouches[0].clientX-x,dy=e.changedTouches[0].clientY-y;x=null;if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)*1.3){shift(dx<0?1:-1);root.dataset.swiped='1';setTimeout(()=>delete root.dataset.swiped,350)}},{passive:true});root.addEventListener('click',e=>{if(root.dataset.swiped){e.preventDefault();e.stopPropagation()}},true);paint()})();
+
+// DERZKO 17 — scroll-controlled cinematic experience
+(() => {
+  const scene = document.getElementById('exp-show');
+  if (!scene) return;
+  const photos = [...scene.querySelectorAll('.exp-photo')];
+  const bars = [...scene.querySelectorAll('.exp-bars i')];
+  const word = document.getElementById('expWord');
+  const act = document.getElementById('expAct');
+  const sub = document.getElementById('expSub');
+  const index = document.getElementById('expIndex');
+  const stories = [
+    ['АТМОСФЕРА', '01 / ПРОСТРАНСТВО', 'Сначала ты видишь. Потом — чувствуешь.'],
+    ['СВЕТ', '02 / ПРЕВРАЩЕНИЕ', 'Один момент меняет всё вокруг.'],
+    ['ЭМОЦИИ', '03 / ПОСЛЕ ФИНАЛА', 'То, что остаётся, когда гаснет свет.']
+  ];
+  let previous = -1, pending = false;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function update() {
+    pending = false;
+    const rect = scene.getBoundingClientRect();
+    const length = Math.max(1, scene.offsetHeight - innerHeight);
+    const progress = Math.max(0, Math.min(.99999, -rect.top / length));
+    const active = Math.min(2, Math.floor(progress * 3));
+    const local = (progress * 3) % 1;
+    photos.forEach((photo, i) => {
+      photo.classList.toggle('is-active', i === active);
+      photo.style.transform = reduced ? 'scale(1)' : `scale(${i === active ? 1.035 + local * .085 : 1.14})`;
+    });
+    bars.forEach((bar, i) => { bar.style.opacity = i === active ? '1' : '.28'; });
+    if (active !== previous) {
+      previous = active;
+      const [heading, label, description] = stories[active];
+      word.innerHTML = heading + '<span>.</span>';
+      act.textContent = label;
+      sub.textContent = description;
+      index.textContent = String(active + 1).padStart(2, '0') + ' / 03';
+    }
+  }
+  function schedule() { if (!pending) { pending = true; requestAnimationFrame(update); } }
+  addEventListener('scroll', schedule, {passive:true});
+  addEventListener('resize', schedule, {passive:true});
+  update();
+})();

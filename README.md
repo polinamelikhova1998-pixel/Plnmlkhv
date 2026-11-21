@@ -1,7 +1,1 @@
-DERZKO. 15.0 — Interactive Portfolio Preview
-
-Upload all files to the root of the GitHub Pages repository.
-
-IMPORTANT: Preview only. Three photographic crops from user-provided MEROPRO PDF are included for private review; confirm rights, credits, and project attribution before public deployment. The website labels this section as a demo and does not claim DERZKO produced these events.
-
-New: interactive three-moment portfolio, full-screen story dialogs, touch controls, animated DERZKO. LAB concept area. Existing sections preserved.
+DERZKO. 17.0 — REAL EXPERIENCE\n\nНовая секция портфолио: три полноэкранные сцены из фотографий, которые предоставила команда. Прокрутка управляет сменой сцен. Отдельный DERZKO. LAB обозначен как авторские концепции.\n\nЗагрузите СОДЕРЖИМОЕ архива в корень GitHub Pages репозитория с заменой файлов. Не загружайте сам ZIP.\n
